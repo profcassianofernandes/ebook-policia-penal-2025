@@ -1,22 +1,27 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>30 Temas de Redação – Polícia Penal (ES)</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Sora:wght@600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Sora:wght@600;800&display=swap"
+        rel="stylesheet">
     <style>
         /* --- Configurações Gerais e de Impressão --- */
         :root {
-            --cor-primaria: #0d47a1; /* Azul escuro */
-            --cor-secundaria: #ff9800; /* Laranja */
+            --cor-primaria: #0d47a1;
+            /* Azul escuro */
+            --cor-secundaria: #ff9800;
+            /* Laranja */
             --cor-texto: #333;
             --cor-fundo: #f4f8fa;
             --cor-branco: #ffffff;
             --sombra: 0 10px 25px rgba(0, 0, 0, 0.08);
         }
+
         body {
             font-family: 'Roboto', sans-serif;
             line-height: 1.7;
@@ -25,60 +30,112 @@
             background-color: var(--cor-fundo);
             color: var(--cor-texto);
         }
+
         .ebook-container {
             max-width: 800px;
             margin: 0 auto;
             background-color: var(--cor-branco);
         }
-        h1, h2, h3 {
+
+        h1,
+        h2,
+        h3 {
             font-family: 'Sora', sans-serif;
             color: var(--cor-primaria);
         }
+
         .page-break {
             page-break-before: always;
         }
+
         @media print {
             body {
                 background-color: var(--cor-branco);
             }
+
             .ebook-container {
                 box-shadow: none;
             }
+
             .theme-card {
                 box-shadow: none;
                 border: 1px solid #eee;
-                page-break-inside: avoid;
+                /* page-break-inside: avoid; */
+                page-break-after: always;
             }
-            .summary {
-                display: none; /* Oculta o sumário na impressão */
+
+            .cover-page {
+                height: 95vh;
+                /* Ajuste de altura para impressão */
             }
         }
 
-        /* --- Estilos da Capa --- */
-        .cover {
+        /* --- NOVA CAPA (VERSÃO COM ALTO CONTRASTE) --- */
+        .cover-page {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             text-align: center;
-            padding: 80px 30px;
-            background: linear-gradient(135deg, var(--cor-primaria), #1565c0);
+            height: 100vh;
+            background: linear-gradient(135deg, #0d326e, #0d47a1);
+            /* Gradiente mais escuro */
             color: var(--cor-branco);
+            padding: 20px;
+            box-sizing: border-box;
         }
-        .cover h1 {
-            font-size: 3em;
-            font-weight: 800;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-            color: var(--cor-branco);
+
+        .cover-page .subtitle {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 400;
+            font-size: 1.1em;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.7);
             margin: 0;
         }
-        .cover p {
+
+        .cover-page .main-title {
+            font-family: 'Sora', sans-serif;
+            font-size: clamp(3em, 10vw, 5.5em);
+            /* Fonte responsiva */
+            font-weight: 800;
+            color: var(--cor-branco);
+            line-height: 1.1;
+            margin: 10px 0;
+            text-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .cover-page .focus-title {
+            font-family: 'Sora', sans-serif;
+            font-size: clamp(1.5em, 5vw, 2em);
+            /* Fonte responsiva */
+            font-weight: 600;
+            background-color: var(--cor-secundaria);
+            color: #1e283b;
+            /* Cor de texto escura para contraste com laranja */
+            padding: 5px 20px;
+            border-radius: 5px;
+            margin: 15px 0 40px 0;
+            text-shadow: none;
+        }
+
+        .cover-page .author-name {
             font-size: 1.2em;
-            margin-top: 10px;
-            opacity: 0.9;
+            font-style: italic;
+            border-top: 1px solid rgba(255, 255, 255, 0.4);
+            padding-top: 20px;
         }
 
         /* --- Estilos das Seções --- */
         .section {
             padding: 40px 30px;
+        }
+
+        .section-bordered {
             border-bottom: 1px solid #e0e0e0;
         }
+
         .section h2 {
             font-size: 2em;
             border-bottom: 3px solid var(--cor-secundaria);
@@ -86,8 +143,8 @@
             display: inline-block;
             margin-top: 0;
         }
-        
-        /* --- Sumário ATUALIZADO --- */
+
+        /* --- Sumário --- */
         .summary ul {
             list-style: none;
             padding: 0;
@@ -95,35 +152,40 @@
             -webkit-columns: 2;
             -moz-columns: 2;
         }
+
         .summary li {
             margin-bottom: 12px;
             padding-left: 20px;
             position: relative;
         }
+
         .summary li::before {
             content: '✓';
             position: absolute;
             left: 0;
             color: var(--cor-secundaria);
         }
+
         .summary a {
             text-decoration: none;
             color: var(--cor-primaria);
             font-weight: bold;
             transition: color 0.3s;
         }
+
         .summary a:hover {
             color: var(--cor-secundaria);
         }
+
         .summary .intro-links li::before {
             content: '→';
         }
-
 
         /* --- Critérios de Correção --- */
         .criteria-list p {
             margin-bottom: 1em;
         }
+
         .criteria-list strong {
             color: var(--cor-primaria);
         }
@@ -137,12 +199,14 @@
             box-shadow: var(--sombra);
             border: 1px solid #e0e0e0;
         }
+
         .theme-card h3 {
             font-size: 1.5em;
             margin-top: 0;
             display: flex;
             align-items: center;
         }
+
         .theme-card h3::before {
             content: "TEMA " counter(theme-counter);
             counter-increment: theme-counter;
@@ -153,6 +217,7 @@
             font-size: 0.7em;
             margin-right: 15px;
         }
+
         .theme-explanation {
             background-color: var(--cor-fundo);
             border-left: 4px solid var(--cor-secundaria);
@@ -160,17 +225,22 @@
             margin: 20px 0;
             border-radius: 4px;
         }
+
         .theme-explanation strong {
             color: var(--cor-primaria);
         }
+
         .theme-text p {
-            text-indent: 2em; /* Indentação de parágrafo */
+            text-indent: 2em;
+            /* Indentação de parágrafo */
             margin-bottom: 1em;
             text-align: justify;
         }
+
         .theme-text p:last-child {
             margin-bottom: 0;
         }
+
         .paragraph-title {
             font-weight: bold;
             color: var(--cor-primaria);
@@ -178,26 +248,29 @@
             margin-bottom: 5px;
             font-style: italic;
         }
-
     </style>
 </head>
+
 <body style="counter-reset: theme-counter;">
 
     <div class="ebook-container">
 
-        <header class="cover">
-            <h1>30 TEMAS DE REDAÇÃO</h1>
-            <p>FOCO NA POLÍCIA PENAL DO ESPÍRITO SANTO (PPES)</p>
-            <p style="font-size: 1em; font-style: italic; margin-top: 30px;">Prof. Cassiano Fernandes</p>
-        </header>
+        <div class="cover-page">
+            <p class="subtitle">Guia Definitivo para a Prova Discursiva</p>
+            <h1 class="main-title">30 TEMAS DE REDAÇÃO</h1>
+            <h2 class="focus-title">POLÍCIA PENAL DO ESPÍRITO SANTO (PPES)</h2>
+            <p class="author-name">Prof. Cassiano Fernandes</p>
+        </div>
 
-        <section id="sumario" class="section summary">
+        <div class="page-break"></div>
+
+        <section id="sumario" class="section summary section-bordered">
             <h2>Sumário</h2>
             <ul class="intro-links">
                 <li><a href="#como-usar">Como Usar o Material</a></li>
                 <li><a href="#criterios">Critérios da Banca IDCAP</a></li>
             </ul>
-            <hr style="border: 1px solid #eee; margin: 20px 0;">
+            <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;">
             <ul>
                 <li><a href="#tema1">Tema 1: Uso da força</a></li>
                 <li><a href="#tema2">Tema 2: Ressocialização</a></li>
@@ -232,18 +305,35 @@
             </ul>
         </section>
 
-        <section id="como-usar" class="section">
+        <div class="page-break"></div>
+
+        <section id="como-usar" class="section section-bordered">
             <h2>Como Usar Este Material</h2>
-            <p>Leia e revise todos os temas elencados abaixo, marcando os conectivos mais importantes. Além disso, extraia as ideias, estruturas e argumentos apresentados nos textos para criar o repertório teórico necessário para obter a tão sonhada aprovação.</p>
+            <p>Leia e revise todos os temas elencados abaixo, marcando os conectivos mais importantes. Além disso,
+                extraia as ideias, estruturas e argumentos apresentados nos textos para criar o repertório teórico
+                necessário para obter a tão sonhada aprovação.</p>
         </section>
-        
-        <section id="criterios" class="section criteria-list">
+
+        <section id="criterios" class="section">
             <h2>Critérios de Correção da Banca IDCAP</h2>
-            <p><strong>Domínio da norma culta:</strong> Ortografia, acentuação, concordância, regência, pontuação, emprego pronominal. Erros recorrentes podem reduzir drasticamente a qualidade da sua escrita. Por esse motivo, faça períodos curtos e bem pontuados para que a coesão textual seja mantida. Utilize elementos de retomada e progressão gradativa, bem como exemplos de fontes genéricas e seguras (Constituição Federal de 1988; Declaração Universal dos Direitos Humanos; Lei de Execução Penal).</p>
-            <p><strong>Adequação ao tema e ao gênero:</strong> Responda exatamente ao que foi perguntado, mantendo o formato dissertativo-argumentativo. Não narre fatos pessoais; argumente com lógica e impessoalidade.</p>
-            <p><strong>Pertinência e consistência:</strong> Os argumentos precisam dialogar entre si, avançando a cada parágrafo. Evite a repetição do mesmo ponto com palavras diferentes.</p>
-            <p><strong>Seleção vocabular:</strong> Privilegie precisão e sobriedade. Ex.: 'eficiência operacional', 'proporcionalidade do uso da força', 'integração interinstitucional', 'responsabilização com garantia de direitos'.</p>
-            <p><strong>Coesão e coerência:</strong> Garanta a progressão por meio de conectivos bem escolhidos e referências claras (retomadas). Feche cada parágrafo com um encerramento coerente e alinhado ao tópico frasal.</p>
+            <div class="criteria-list">
+                <p><strong>Domínio da norma culta:</strong> Ortografia, acentuação, concordância, regência, pontuação,
+                    emprego pronominal. Erros recorrentes podem reduzir drasticamente a qualidade da sua escrita. Por
+                    esse motivo, faça períodos curtos e bem pontuados para que a coesão textual seja mantida. Utilize
+                    elementos de retomada e progressão gradativa, bem como exemplos de fontes seguras (Constituição
+                    Federal de 1988; Declaração Universal dos Direitos Humanos; Lei de Execução Penal).</p>
+                <p><strong>Adequação ao tema e ao gênero:</strong> Responda exatamente ao que foi perguntado, mantendo o
+                    formato dissertativo-argumentativo. Não narre fatos pessoais; argumente com lógica e impessoalidade.
+                </p>
+                <p><strong>Pertinência e consistência:</strong> Os argumentos precisam dialogar entre si, avançando a
+                    cada parágrafo. Evite a repetição do mesmo ponto com palavras diferentes.</p>
+                <p><strong>Seleção vocabular:</strong> Privilegie precisão e sobriedade. Ex.: 'eficiência operacional',
+                    'proporcionalidade do uso da força', 'integração interinstitucional', 'responsabilização com
+                    garantia de direitos'.</p>
+                <p><strong>Coesão e coerência:</strong> Garanta a progressão por meio de conectivos bem escolhidos e
+                    referências claras (retomadas). Feche cada parágrafo com um encerramento coerente e alinhado ao
+                    tópico frasal.</p>
+            </div>
         </section>
 
         <div class="page-break"></div>
@@ -254,420 +344,1049 @@
             <div id="tema1" class="theme-card">
                 <h3>O uso progressivo da força no sistema prisional</h3>
                 <div class="theme-explanation">
-                    <p><strong>Explicação:</strong> Tema frequente em concursos, pois trata do equilíbrio entre legalidade, proporcionalidade e necessidade. Exige referência à Constituição Federal de 1988 (CF/88) e à Lei de Execução Penal (LEP).</p>
+                    <p><strong>Explicação:</strong> Tema frequente em concursos, pois trata do equilíbrio entre
+                        legalidade, proporcionalidade e necessidade. Exige referência à Constituição Federal de 1988
+                        (CF/88) e à Lei de Execução Penal (LEP).</p>
                 </div>
                 <div class="theme-text">
-                    <p><span class="paragraph-title">Introdução:</span>Entre os aspectos referentes ao uso progressivo da força no sistema prisional, três pontos merecem destaque especial: o primeiro vincula-se à base legal que fundamenta a atuação; o segundo relaciona-se à operacionalidade do cotidiano prisional; e, por fim, à implementação de políticas de reintegração social e valorização profissional.</p>
-                    <p><span class="paragraph-title">Desenvolvimento 1:</span>Em primeiro lugar, a base legal mostra-se essencial, pois assegura legitimidade às ações da Polícia Penal. De acordo com a Constituição Federal de 1988 (CF/88) e a Lei de Execução Penal (LEP), a custódia deve respeitar os princípios da legalidade e da dignidade humana.</p>
-                    <p><span class="paragraph-title">Desenvolvimento 2:</span>Em segundo lugar, a operacionalidade cotidiana exige preparo técnico e constante atualização. Treinamentos, protocolos de segurança e uso adequado de recursos tecnológicos contribuem para prevenir fugas e rebeliões. A título de exemplo, programas de capacitação periódica em diferentes estados demonstram resultados positivos, em consonância com a Declaração Universal dos Direitos Humanos (DUDH).</p>
-                    <p><span class="paragraph-title">Desenvolvimento 3:</span>Cumpre destacar, ainda, a relevância da reintegração social e da valorização profissional. O incentivo ao trabalho, à educação e ao fortalecimento dos vínculos familiares reduz significativamente a reincidência, conforme previsto no Estatuto da Criança e do Adolescente (ECA) e em políticas de reinserção. Paralelamente, a valorização do servidor eleva sua motivação e eficiência, fortalecendo a segurança institucional.</p>
-                    <p><span class="paragraph-title">Conclusão:</span>Portanto, reafirma-se que o enfrentamento do tema demanda medidas coordenadas e efetivas. Compete ao Estado, por intermédio da Polícia Penal e de políticas públicas integradas, implementar programas de capacitação, ampliar as oportunidades de trabalho e educação para internos e assegurar condições adequadas aos servidores, com o objetivo de garantir disciplina, ordem e reinserção social.</p>
+                    <p><span class="paragraph-title">Introdução:</span>Entre os aspectos referentes ao uso progressivo
+                        da força no sistema prisional, três pontos merecem destaque especial: o primeiro vincula-se à
+                        base legal que fundamenta a atuação; o segundo relaciona-se à operacionalidade do cotidiano
+                        prisional; e, por fim, à implementação de políticas de reintegração social e valorização
+                        profissional.</p>
+                    <p><span class="paragraph-title">Desenvolvimento 1:</span>Em primeiro lugar, a base legal mostra-se
+                        essencial, pois assegura legitimidade às ações da Polícia Penal. De acordo com a Constituição
+                        Federal de 1988 (CF/88) e a Lei de Execução Penal (LEP), a custódia deve respeitar os princípios
+                        da legalidade e da dignidade humana.</p>
+                    <p><span class="paragraph-title">Desenvolvimento 2:</span>Em segundo lugar, a operacionalidade
+                        cotidiana exige preparo técnico e constante atualização. Treinamentos, protocolos de segurança e
+                        uso adequado de recursos tecnológicos contribuem para prevenir fugas e rebeliões. A título de
+                        exemplo, programas de capacitação periódica em diferentes estados demonstram resultados
+                        positivos, em consonância com a Declaração Universal dos Direitos Humanos (DUDH).</p>
+                    <p><span class="paragraph-title">Desenvolvimento 3:</span>Cumpre destacar, ainda, a relevância da
+                        reintegração social e da valorização profissional. O incentivo ao trabalho, à educação e ao
+                        fortalecimento dos vínculos familiares reduz significativamente a reincidência, conforme
+                        previsto no Estatuto da Criança e do Adolescente (ECA) e em políticas de reinserção.
+                        Paralelamente, a valorização do servidor eleva sua motivação e eficiência, fortalecendo a
+                        segurança institucional.</p>
+                    <p><span class="paragraph-title">Conclusão:</span>Portanto, reafirma-se que o enfrentamento do tema
+                        demanda medidas coordenadas e efetivas. Compete ao Estado, por intermédio da Polícia Penal e de
+                        políticas públicas integradas, implementar programas de capacitação, ampliar as oportunidades de
+                        trabalho e educação para internos e assegurar condições adequadas aos servidores, com o objetivo
+                        de garantir disciplina, ordem e reinserção social.</p>
                 </div>
             </div>
 
             <div id="tema2" class="theme-card">
                 <h3>Ressocialização de detentos: desafios e possibilidades</h3>
                 <div class="theme-explanation">
-                    <p><strong>Explicação:</strong> Questão central da função social da pena, explorada em provas que discutem reintegração e medidas previstas na Lei de Execução Penal (LEP).</p>
+                    <p><strong>Explicação:</strong> Questão central da função social da pena, explorada em provas que
+                        discutem reintegração e medidas previstas na Lei de Execução Penal (LEP).</p>
                 </div>
                 <div class="theme-text">
-                    <p><span class="paragraph-title">Introdução:</span>Entre os aspectos referentes à ressocialização de detentos, seus desafios e possibilidades, três pontos merecem destaque especial: o primeiro vincula-se à base legal que fundamenta a atuação; o segundo relaciona-se à operacionalidade do cotidiano prisional; e, por fim, à implementação de políticas de reintegração social e valorização profissional.</p>
-                    <p><span class="paragraph-title">Desenvolvimento 1:</span>Em primeiro lugar, a base legal mostra-se essencial, pois assegura legitimidade às ações da Polícia Penal. De acordo com a Constituição Federal de 1988 (CF/88) e a Lei de Execução Penal (LEP), a custódia deve respeitar os princípios da legalidade e da dignidade humana.</p>
-                    <p><span class="paragraph-title">Desenvolvimento 2:</span>Em segundo lugar, a operacionalidade cotidiana exige preparo técnico e constante atualização. Treinamentos, protocolos de segurança e uso adequado de recursos tecnológicos contribuem para prevenir fugas e rebeliões. A título de exemplo, programas de capacitação periódica em diferentes estados demonstram resultados positivos, em consonância com a Declaração Universal dos Direitos Humanos (DUDH).</p>
-                    <p><span class="paragraph-title">Desenvolvimento 3:</span>Cumpre destacar, ainda, a relevância da reintegração social e da valorização profissional. O incentivo ao trabalho, à educação e ao fortalecimento dos vínculos familiares reduz significativamente a reincidência, conforme previsto no Estatuto da Criança e do Adolescente (ECA) e em políticas de reinserção. Paralelamente, a valorização do servidor eleva sua motivação e eficiência, fortalecendo a segurança institucional.</p>
-                    <p><span class="paragraph-title">Conclusão:</span>Portanto, reafirma-se que o enfrentamento do tema demanda medidas coordenadas e efetivas. Compete ao Estado, por intermédio da Polícia Penal e de políticas públicas integradas, implementar programas de capacitação, ampliar as oportunidades de trabalho e educação para internos e assegurar condições adequadas aos servidores, com o objetivo de garantir disciplina, ordem e reinserção social.</p>
+                    <p><span class="paragraph-title">Introdução:</span>Entre os aspectos referentes à ressocialização de
+                        detentos, seus desafios e possibilidades, três pontos merecem destaque especial: o primeiro
+                        vincula-se à base legal que fundamenta a atuação; o segundo relaciona-se à operacionalidade do
+                        cotidiano prisional; e, por fim, à implementação de políticas de reintegração social e
+                        valorização profissional.</p>
+                    <p><span class="paragraph-title">Desenvolvimento 1:</span>Em primeiro lugar, a base legal mostra-se
+                        essencial, pois assegura legitimidade às ações da Polícia Penal. De acordo com a Constituição
+                        Federal de 1988 (CF/88) e a Lei de Execução Penal (LEP), a custódia deve respeitar os princípios
+                        da legalidade e da dignidade humana.</p>
+                    <p><span class="paragraph-title">Desenvolvimento 2:</span>Em segundo lugar, a operacionalidade
+                        cotidiana exige preparo técnico e constante atualização. Treinamentos, protocolos de segurança e
+                        uso adequado de recursos tecnológicos contribuem para prevenir fugas e rebeliões. A título de
+                        exemplo, programas de capacitação periódica em diferentes estados demonstram resultados
+                        positivos, em consonância com a Declaração Universal dos Direitos Humanos (DUDH).</p>
+                    <p><span class="paragraph-title">Desenvolvimento 3:</span>Cumpre destacar, ainda, a relevância da
+                        reintegração social e da valorização profissional. O incentivo ao trabalho, à educação e ao
+                        fortalecimento dos vínculos familiares reduz significativamente a reincidência, conforme
+                        previsto no Estatuto da Criança e do Adolescente (ECA) e em políticas de reinserção.
+                        Paralelamente, a valorização do servidor eleva sua motivação e eficiência, fortalecendo a
+                        segurança institucional.</p>
+                    <p><span class="paragraph-title">Conclusão:</span>Portanto, reafirma-se que o enfrentamento do tema
+                        demanda medidas coordenadas e efetivas. Compete ao Estado, por intermédio da Polícia Penal e de
+                        políticas públicas integradas, implementar programas de capacitação, ampliar as oportunidades de
+                        trabalho e educação para internos e assegurar condições adequadas aos servidores, com o objetivo
+                        de garantir disciplina, ordem e reinserção social.</p>
                 </div>
             </div>
-            
+
             <div id="tema3" class="theme-card">
                 <h3>A superlotação carcerária no Brasil e seus impactos</h3>
                 <div class="theme-explanation">
-                    <p><strong>Explicação:</strong> Problema estrutural e tema recorrente em concursos, relacionado à violação da Declaração Universal dos Direitos Humanos (DUDH) e ao desafio de gestão penitenciária.</p>
+                    <p><strong>Explicação:</strong> Problema estrutural e tema recorrente em concursos, relacionado à
+                        violação da Declaração Universal dos Direitos Humanos (DUDH) e ao desafio de gestão
+                        penitenciária.</p>
                 </div>
                 <div class="theme-text">
-                    <p><span class="paragraph-title">Introdução:</span>Entre os aspectos referentes à superlotação carcerária no Brasil e seus impactos, três pontos merecem destaque especial: o primeiro vincula-se à base legal que fundamenta a atuação; o segundo relaciona-se à operacionalidade do cotidiano prisional; e, por fim, à implementação de políticas de reintegração social e valorização profissional.</p>
-                    <p><span class="paragraph-title">Desenvolvimento 1:</span>Em primeiro lugar, a base legal mostra-se essencial, pois assegura legitimidade às ações da Polícia Penal. De acordo com a Constituição Federal de 1988 (CF/88) e a Lei de Execução Penal (LEP), a custódia deve respeitar os princípios da legalidade e da dignidade humana.</p>
-                    <p><span class="paragraph-title">Desenvolvimento 2:</span>Em segundo lugar, a operacionalidade cotidiana exige preparo técnico e constante atualização. Treinamentos, protocolos de segurança e uso adequado de recursos tecnológicos contribuem para prevenir fugas e rebeliões. A título de exemplo, programas de capacitação periódica em diferentes estados demonstram resultados positivos, em consonância com a Declaração Universal dos Direitos Humanos (DUDH).</p>
-                    <p><span class="paragraph-title">Desenvolvimento 3:</span>Cumpre destacar, ainda, a relevância da reintegração social e da valorização profissional. O incentivo ao trabalho, à educação e ao fortalecimento dos vínculos familiares reduz significativamente a reincidência, conforme previsto no Estatuto da Criança e do Adolescente (ECA) e em políticas de reinserção. Paralelamente, a valorização do servidor eleva sua motivação e eficiência, fortalecendo a segurança institucional.</p>
-                    <p><span class="paragraph-title">Conclusão:</span>Portanto, reafirma-se que o enfrentamento do tema demanda medidas coordenadas e efetivas. Compete ao Estado, por intermédio da Polícia Penal e de políticas públicas integradas, implementar programas de capacitação, ampliar as oportunidades de trabalho e educação para internos e assegurar condições adequadas aos servidores, com o objetivo de garantir disciplina, ordem e reinserção social.</p>
+                    <p><span class="paragraph-title">Introdução:</span>Entre os aspectos referentes à superlotação
+                        carcerária no Brasil e seus impactos, três pontos merecem destaque especial: o primeiro
+                        vincula-se à base legal que fundamenta a atuação; o segundo relaciona-se à operacionalidade do
+                        cotidiano prisional; e, por fim, à implementação de políticas de reintegração social e
+                        valorização profissional.</p>
+                    <p><span class="paragraph-title">Desenvolvimento 1:</span>Em primeiro lugar, a base legal mostra-se
+                        essencial, pois assegura legitimidade às ações da Polícia Penal. De acordo com a Constituição
+                        Federal de 1988 (CF/88) e a Lei de Execução Penal (LEP), a custódia deve respeitar os princípios
+                        da legalidade e da dignidade humana.</p>
+                    <p><span class="paragraph-title">Desenvolvimento 2:</span>Em segundo lugar, a operacionalidade
+                        cotidiana exige preparo técnico e constante atualização. Treinamentos, protocolos de segurança e
+                        uso adequado de recursos tecnológicos contribuem para prevenir fugas e rebeliões. A título de
+                        exemplo, programas de capacitação periódica em diferentes estados demonstram resultados
+                        positivos, em consonância com a Declaração Universal dos Direitos Humanos (DUDH).</p>
+                    <p><span class="paragraph-title">Desenvolvimento 3:</span>Cumpre destacar, ainda, a relevância da
+                        reintegração social e da valorização profissional. O incentivo ao trabalho, à educação e ao
+                        fortalecimento dos vínculos familiares reduz significativamente a reincidência, conforme
+                        previsto no Estatuto da Criança e do Adolescente (ECA) e em políticas de reinserção.
+                        Paralelamente, a valorização do servidor eleva sua motivação e eficiência, fortalecendo a
+                        segurança institucional.</p>
+                    <p><span class="paragraph-title">Conclusão:</span>Portanto, reafirma-se que o enfrentamento do tema
+                        demanda medidas coordenadas e efetivas. Compete ao Estado, por intermédio da Polícia Penal e de
+                        políticas públicas integradas, implementar programas de capacitação, ampliar as oportunidades de
+                        trabalho e educação para internos e assegurar condições adequadas aos servidores, com o objetivo
+                        de garantir disciplina, ordem e reinserção social.</p>
                 </div>
             </div>
-            
+
             <div id="tema4" class="theme-card">
                 <h3>A atuação da Polícia Penal na garantia da disciplina e legalidade</h3>
                 <div class="theme-explanation">
-                    <p><strong>Explicação:</strong> Assunto ligado à missão constitucional da Polícia Penal e ao papel dos agentes na manutenção da ordem e cumprimento das normas.</p>
+                    <p><strong>Explicação:</strong> Assunto ligado à missão constitucional da Polícia Penal e ao papel
+                        dos agentes na manutenção da ordem e cumprimento das normas.</p>
                 </div>
                 <div class="theme-text">
-                    <p><span class="paragraph-title">Introdução:</span>Entre os aspectos referentes à atuação da Polícia Penal na garantia da disciplina e legalidade, três pontos merecem destaque especial: o primeiro vincula-se à base legal que fundamenta a atuação; o segundo relaciona-se à operacionalidade do cotidiano prisional; e, por fim, à implementação de políticas de reintegração social e valorização profissional.</p>
-                    <p><span class="paragraph-title">Desenvolvimento 1:</span>Em primeiro lugar, a base legal mostra-se essencial, pois assegura legitimidade às ações da Polícia Penal. De acordo com a Constituição Federal de 1988 (CF/88) e a Lei de Execução Penal (LEP), a custódia deve respeitar os princípios da legalidade e da dignidade humana.</p>
-                    <p><span class="paragraph-title">Desenvolvimento 2:</span>Em segundo lugar, a operacionalidade cotidiana exige preparo técnico e constante atualização. Treinamentos, protocolos de segurança e uso adequado de recursos tecnológicos contribuem para prevenir fugas e rebeliões. A título de exemplo, programas de capacitação periódica em diferentes estados demonstram resultados positivos, em consonância com a Declaração Universal dos Direitos Humanos (DUDH).</p>
-                    <p><span class="paragraph-title">Desenvolvimento 3:</span>Cumpre destacar, ainda, a relevância da reintegração social e da valorização profissional. O incentivo ao trabalho, à educação e ao fortalecimento dos vínculos familiares reduz significativamente a reincidência, conforme previsto no Estatuto da Criança e do Adolescente (ECA) e em políticas de reinserção. Paralelamente, a valorização do servidor eleva sua motivação e eficiência, fortalecendo a segurança institucional.</p>
-                    <p><span class="paragraph-title">Conclusão:</span>Portanto, reafirma-se que o enfrentamento do tema demanda medidas coordenadas e efetivas. Compete ao Estado, por intermédio da Polícia Penal e de políticas públicas integradas, implementar programas de capacitação, ampliar as oportunidades de trabalho e educação para internos e assegurar condições adequadas aos servidores, com o objetivo de garantir disciplina, ordem e reinserção social.</p>
+                    <p><span class="paragraph-title">Introdução:</span>Entre os aspectos referentes à atuação da Polícia
+                        Penal na garantia da disciplina e legalidade, três pontos merecem destaque especial: o primeiro
+                        vincula-se à base legal que fundamenta a atuação; o segundo relaciona-se à operacionalidade do
+                        cotidiano prisional; e, por fim, à implementação de políticas de reintegração social e
+                        valorização profissional.</p>
+                    <p><span class="paragraph-title">Desenvolvimento 1:</span>Em primeiro lugar, a base legal mostra-se
+                        essencial, pois assegura legitimidade às ações da Polícia Penal. De acordo com a Constituição
+                        Federal de 1988 (CF/88) e a Lei de Execução Penal (LEP), a custódia deve respeitar os princípios
+                        da legalidade e da dignidade humana.</p>
+                    <p><span class="paragraph-title">Desenvolvimento 2:</span>Em segundo lugar, a operacionalidade
+                        cotidiana exige preparo técnico e constante atualização. Treinamentos, protocolos de segurança e
+                        uso adequado de recursos tecnológicos contribuem para prevenir fugas e rebeliões. A título de
+                        exemplo, programas de capacitação periódica em diferentes estados demonstram resultados
+                        positivos, em consonância com a Declaração Universal dos Direitos Humanos (DUDH).</p>
+                    <p><span class="paragraph-title">Desenvolvimento 3:</span>Cumpre destacar, ainda, a relevância da
+                        reintegração social e da valorização profissional. O incentivo ao trabalho, à educação e ao
+                        fortalecimento dos vínculos familiares reduz significativamente a reincidência, conforme
+                        previsto no Estatuto da Criança e do Adolescente (ECA) e em políticas de reinserção.
+                        Paralelamente, a valorização do servidor eleva sua motivação e eficiência, fortalecendo a
+                        segurança institucional.</p>
+                    <p><span class="paragraph-title">Conclusão:</span>Portanto, reafirma-se que o enfrentamento do tema
+                        demanda medidas coordenadas e efetivas. Compete ao Estado, por intermédio da Polícia Penal e de
+                        políticas públicas integradas, implementar programas de capacitação, ampliar as oportunidades de
+                        trabalho e educação para internos e assegurar condições adequadas aos servidores, com o objetivo
+                        de garantir disciplina, ordem e reinserção social.</p>
                 </div>
             </div>
 
             <div id="tema5" class="theme-card">
                 <h3>A importância da capacitação contínua dos policiais penais</h3>
                 <div class="theme-explanation">
-                    <p><strong>Explicação:</strong> Explorado em editais por destacar a necessidade de atualização permanente dos servidores diante de novas demandas e crises.</p>
+                    <p><strong>Explicação:</strong> Explorado em editais por destacar a necessidade de atualização
+                        permanente dos servidores diante de novas demandas e crises.</p>
                 </div>
                 <div class="theme-text">
-                    <p><span class="paragraph-title">Introdução:</span>Entre os aspectos referentes à importância da capacitação contínua dos policiais penais, três pontos merecem destaque especial: o primeiro vincula-se à base legal que fundamenta a atuação; o segundo relaciona-se à operacionalidade do cotidiano prisional; e, por fim, à implementação de políticas de reintegração social e valorização profissional.</p>
-                    <p><span class="paragraph-title">Desenvolvimento 1:</span>Em primeiro lugar, a base legal mostra-se essencial, pois assegura legitimidade às ações da Polícia Penal. De acordo com a Constituição Federal de 1988 (CF/88) e a Lei de Execução Penal (LEP), a custódia deve respeitar os princípios da legalidade e da dignidade humana.</p>
-                    <p><span class="paragraph-title">Desenvolvimento 2:</span>Em segundo lugar, a operacionalidade cotidiana exige preparo técnico e constante atualização. Treinamentos, protocolos de segurança e uso adequado de recursos tecnológicos contribuem para prevenir fugas e rebeliões. A título de exemplo, programas de capacitação periódica em diferentes estados demonstram resultados positivos, em consonância com a Declaração Universal dos Direitos Humanos (DUDH).</p>
-                    <p><span class="paragraph-title">Desenvolvimento 3:</span>Cumpre destacar, ainda, a relevância da reintegração social e da valorização profissional. O incentivo ao trabalho, à educação e ao fortalecimento dos vínculos familiares reduz significativamente a reincidência, conforme previsto no Estatuto da Criança e do Adolescente (ECA) e em políticas de reinserção. Paralelamente, a valorização do servidor eleva sua motivação e eficiência, fortalecendo a segurança institucional.</p>
-                    <p><span class="paragraph-title">Conclusão:</span>Portanto, reafirma-se que o enfrentamento do tema demanda medidas coordenadas e efetivas. Compete ao Estado, por intermédio da Polícia Penal e de políticas públicas integradas, implementar programas de capacitação, ampliar as oportunidades de trabalho e educação para internos e assegurar condições adequadas aos servidores, com o objetivo de garantir disciplina, ordem e reinserção social.</p>
+                    <p><span class="paragraph-title">Introdução:</span>Entre os aspectos referentes à importância da
+                        capacitação contínua dos policiais penais, três pontos merecem destaque especial: o primeiro
+                        vincula-se à base legal que fundamenta a atuação; o segundo relaciona-se à operacionalidade do
+                        cotidiano prisional; e, por fim, à implementação de políticas de reintegração social e
+                        valorização profissional.</p>
+                    <p><span class="paragraph-title">Desenvolvimento 1:</span>Em primeiro lugar, a base legal mostra-se
+                        essencial, pois assegura legitimidade às ações da Polícia Penal. De acordo com a Constituição
+                        Federal de 1988 (CF/88) e a Lei de Execução Penal (LEP), a custódia deve respeitar os princípios
+                        da legalidade e da dignidade humana.</p>
+                    <p><span class="paragraph-title">Desenvolvimento 2:</span>Em segundo lugar, a operacionalidade
+                        cotidiana exige preparo técnico e constante atualização. Treinamentos, protocolos de segurança e
+                        uso adequado de recursos tecnológicos contribuem para prevenir fugas e rebeliões. A título de
+                        exemplo, programas de capacitação periódica em diferentes estados demonstram resultados
+                        positivos, em consonância com a Declaração Universal dos Direitos Humanos (DUDH).</p>
+                    <p><span class="paragraph-title">Desenvolvimento 3:</span>Cumpre destacar, ainda, a relevância da
+                        reintegração social e da valorização profissional. O incentivo ao trabalho, à educação e ao
+                        fortalecimento dos vínculos familiares reduz significativamente a reincidência, conforme
+                        previsto no Estatuto da Criança e do Adolescente (ECA) e em políticas de reinserção.
+                        Paralelamente, a valorização do servidor eleva sua motivação e eficiência, fortalecendo a
+                        segurança institucional.</p>
+                    <p><span class="paragraph-title">Conclusão:</span>Portanto, reafirma-se que o enfrentamento do tema
+                        demanda medidas coordenadas e efetivas. Compete ao Estado, por intermédio da Polícia Penal e de
+                        políticas públicas integradas, implementar programas de capacitação, ampliar as oportunidades de
+                        trabalho e educação para internos e assegurar condições adequadas aos servidores, com o objetivo
+                        de garantir disciplina, ordem e reinserção social.</p>
                 </div>
             </div>
 
             <div id="tema6" class="theme-card">
                 <h3>Políticas públicas de saúde no sistema prisional</h3>
                 <div class="theme-explanation">
-                    <p><strong>Explicação:</strong> Questão de grande relevância, especialmente após a pandemia, vinculada ao dever estatal de assegurar cuidados básicos à população carcerária.</p>
+                    <p><strong>Explicação:</strong> Questão de grande relevância, especialmente após a pandemia,
+                        vinculada ao dever estatal de assegurar cuidados básicos à população carcerária.</p>
                 </div>
                 <div class="theme-text">
-                    <p><span class="paragraph-title">Introdução:</span>Entre os aspectos referentes a políticas públicas de saúde no sistema prisional, três pontos merecem destaque especial: o primeiro vincula-se à base legal que fundamenta a atuação; o segundo relaciona-se à operacionalidade do cotidiano prisional; e, por fim, à implementação de políticas de reintegração social e valorização profissional.</p>
-                    <p><span class="paragraph-title">Desenvolvimento 1:</span>Em primeiro lugar, a base legal mostra-se essencial, pois assegura legitimidade às ações da Polícia Penal. De acordo com a Constituição Federal de 1988 (CF/88) e a Lei de Execução Penal (LEP), a custódia deve respeitar os princípios da legalidade e da dignidade humana.</p>
-                    <p><span class="paragraph-title">Desenvolvimento 2:</span>Em segundo lugar, a operacionalidade cotidiana exige preparo técnico e constante atualização. Treinamentos, protocolos de segurança e uso adequado de recursos tecnológicos contribuem para prevenir fugas e rebeliões. A título de exemplo, programas de capacitação periódica em diferentes estados demonstram resultados positivos, em consonância com a Declaração Universal dos Direitos Humanos (DUDH).</p>
-                    <p><span class="paragraph-title">Desenvolvimento 3:</span>Cumpre destacar, ainda, a relevância da reintegração social e da valorização profissional. O incentivo ao trabalho, à educação e ao fortalecimento dos vínculos familiares reduz significativamente a reincidência, conforme previsto no Estatuto da Criança e do Adolescente (ECA) e em políticas de reinserção. Paralelamente, a valorização do servidor eleva sua motivação e eficiência, fortalecendo a segurança institucional.</p>
-                    <p><span class="paragraph-title">Conclusão:</span>Portanto, reafirma-se que o enfrentamento do tema demanda medidas coordenadas e efetivas. Compete ao Estado, por intermédio da Polícia Penal e de políticas públicas integradas, implementar programas de capacitação, ampliar as oportunidades de trabalho e educação para internos e assegurar condições adequadas aos servidores, com o objetivo de garantir disciplina, ordem e reinserção social.</p>
+                    <p><span class="paragraph-title">Introdução:</span>Entre os aspectos referentes a políticas públicas
+                        de saúde no sistema prisional, três pontos merecem destaque especial: o primeiro vincula-se à
+                        base legal que fundamenta a atuação; o segundo relaciona-se à operacionalidade do cotidiano
+                        prisional; e, por fim, à implementação de políticas de reintegração social e valorização
+                        profissional.</p>
+                    <p><span class="paragraph-title">Desenvolvimento 1:</span>Em primeiro lugar, a base legal mostra-se
+                        essencial, pois assegura legitimidade às ações da Polícia Penal. De acordo com a Constituição
+                        Federal de 1988 (CF/88) e a Lei de Execução Penal (LEP), a custódia deve respeitar os princípios
+                        da legalidade e da dignidade humana.</p>
+                    <p><span class="paragraph-title">Desenvolvimento 2:</span>Em segundo lugar, a operacionalidade
+                        cotidiana exige preparo técnico e constante atualização. Treinamentos, protocolos de segurança e
+                        uso adequado de recursos tecnológicos contribuem para prevenir fugas e rebeliões. A título de
+                        exemplo, programas de capacitação periódica em diferentes estados demonstram resultados
+                        positivos, em consonância com a Declaração Universal dos Direitos Humanos (DUDH).</p>
+                    <p><span class="paragraph-title">Desenvolvimento 3:</span>Cumpre destacar, ainda, a relevância da
+                        reintegração social e da valorização profissional. O incentivo ao trabalho, à educação e ao
+                        fortalecimento dos vínculos familiares reduz significativamente a reincidência, conforme
+                        previsto no Estatuto da Criança e do Adolescente (ECA) e em políticas de reinserção.
+                        Paralelamente, a valorização do servidor eleva sua motivação e eficiência, fortalecendo a
+                        segurança institucional.</p>
+                    <p><span class="paragraph-title">Conclusão:</span>Portanto, reafirma-se que o enfrentamento do tema
+                        demanda medidas coordenadas e efetivas. Compete ao Estado, por intermédio da Polícia Penal e de
+                        políticas públicas integradas, implementar programas de capacitação, ampliar as oportunidades de
+                        trabalho e educação para internos e assegurar condições adequadas aos servidores, com o objetivo
+                        de garantir disciplina, ordem e reinserção social.</p>
                 </div>
             </div>
 
             <div id="tema7" class="theme-card">
                 <h3>O papel da tecnologia no monitoramento de presos</h3>
                 <div class="theme-explanation">
-                    <p><strong>Explicação:</strong> Tema atual, que envolve tornozeleiras eletrônicas, videomonitoramento e sistemas digitais de rastreamento.</p>
+                    <p><strong>Explicação:</strong> Tema atual, que envolve tornozeleiras eletrônicas,
+                        videomonitoramento e sistemas digitais de rastreamento.</p>
                 </div>
                 <div class="theme-text">
-                    <p><span class="paragraph-title">Introdução:</span>Entre os aspectos referentes ao papel da tecnologia no monitoramento de presos, três pontos merecem destaque especial: o primeiro vincula-se à base legal que fundamenta a atuação; o segundo relaciona-se à operacionalidade do cotidiano prisional; e, por fim, à implementação de políticas de reintegração social e valorização profissional.</p>
-                    <p><span class="paragraph-title">Desenvolvimento 1:</span>Em primeiro lugar, a base legal mostra-se essencial, pois assegura legitimidade às ações da Polícia Penal. De acordo com a Constituição Federal de 1988 (CF/88) e a Lei de Execução Penal (LEP), a custódia deve respeitar os princípios da legalidade e da dignidade humana.</p>
-                    <p><span class="paragraph-title">Desenvolvimento 2:</span>Em segundo lugar, a operacionalidade cotidiana exige preparo técnico e constante atualização. Treinamentos, protocolos de segurança e uso adequado de recursos tecnológicos contribuem para prevenir fugas e rebeliões. A título de exemplo, programas de capacitação periódica em diferentes estados demonstram resultados positivos, em consonância com a Declaração Universal dos Direitos Humanos (DUDH).</p>
-                    <p><span class="paragraph-title">Desenvolvimento 3:</span>Cumpre destacar, ainda, a relevância da reintegração social e da valorização profissional. O incentivo ao trabalho, à educação e ao fortalecimento dos vínculos familiares reduz significativamente a reincidência, conforme previsto no Estatuto da Criança e do Adolescente (ECA) e em políticas de reinserção. Paralelamente, a valorização do servidor eleva sua motivação e eficiência, fortalecendo a segurança institucional.</p>
-                    <p><span class="paragraph-title">Conclusão:</span>Portanto, reafirma-se que o enfrentamento do tema demanda medidas coordenadas e efetivas. Compete ao Estado, por intermédio da Polícia Penal e de políticas públicas integradas, implementar programas de capacitação, ampliar as oportunidades de trabalho e educação para internos e assegurar condições adequadas aos servidores, com o objetivo de garantir disciplina, ordem e reinserção social.</p>
+                    <p><span class="paragraph-title">Introdução:</span>Entre os aspectos referentes ao papel da
+                        tecnologia no monitoramento de presos, três pontos merecem destaque especial: o primeiro
+                        vincula-se à base legal que fundamenta a atuação; o segundo relaciona-se à operacionalidade do
+                        cotidiano prisional; e, por fim, à implementação de políticas de reintegração social e
+                        valorização profissional.</p>
+                    <p><span class="paragraph-title">Desenvolvimento 1:</span>Em primeiro lugar, a base legal mostra-se
+                        essencial, pois assegura legitimidade às ações da Polícia Penal. De acordo com a Constituição
+                        Federal de 1988 (CF/88) e a Lei de Execução Penal (LEP), a custódia deve respeitar os princípios
+                        da legalidade e da dignidade humana.</p>
+                    <p><span class="paragraph-title">Desenvolvimento 2:</span>Em segundo lugar, a operacionalidade
+                        cotidiana exige preparo técnico e constante atualização. Treinamentos, protocolos de segurança e
+                        uso adequado de recursos tecnológicos contribuem para prevenir fugas e rebeliões. A título de
+                        exemplo, programas de capacitação periódica em diferentes estados demonstram resultados
+                        positivos, em consonância com a Declaração Universal dos Direitos Humanos (DUDH).</p>
+                    <p><span class="paragraph-title">Desenvolvimento 3:</span>Cumpre destacar, ainda, a relevância da
+                        reintegração social e da valorização profissional. O incentivo ao trabalho, à educação e ao
+                        fortalecimento dos vínculos familiares reduz significativamente a reincidência, conforme
+                        previsto no Estatuto da Criança e do Adolescente (ECA) e em políticas de reinserção.
+                        Paralelamente, a valorização do servidor eleva sua motivação e eficiência, fortalecendo a
+                        segurança institucional.</p>
+                    <p><span class="paragraph-title">Conclusão:</span>Portanto, reafirma-se que o enfrentamento do tema
+                        demanda medidas coordenadas e efetivas. Compete ao Estado, por intermédio da Polícia Penal e de
+                        políticas públicas integradas, implementar programas de capacitação, ampliar as oportunidades de
+                        trabalho e educação para internos e assegurar condições adequadas aos servidores, com o objetivo
+                        de garantir disciplina, ordem e reinserção social.</p>
                 </div>
             </div>
 
             <div id="tema8" class="theme-card">
                 <h3>Direitos humanos e segurança no sistema prisional</h3>
                 <div class="theme-explanation">
-                    <p><strong>Explicação:</strong> Questão clássica que pede conciliar disciplina interna e tratados internacionais como a Declaração Universal dos Direitos Humanos (DUDH).</p>
+                    <p><strong>Explicação:</strong> Questão clássica que pede conciliar disciplina interna e tratados
+                        internacionais como a Declaração Universal dos Direitos Humanos (DUDH).</p>
                 </div>
                 <div class="theme-text">
-                    <p><span class="paragraph-title">Introdução:</span>Entre os aspectos referentes a direitos humanos e segurança no sistema prisional, três pontos merecem destaque especial: o primeiro vincula-se à base legal que fundamenta a atuação; o segundo relaciona-se à operacionalidade do cotidiano prisional; e, por fim, à implementação de políticas de reintegração social e valorização profissional.</p>
-                    <p><span class="paragraph-title">Desenvolvimento 1:</span>Em primeiro lugar, a base legal mostra-se essencial, pois assegura legitimidade às ações da Polícia Penal. De acordo com a Constituição Federal de 1988 (CF/88) e a Lei de Execução Penal (LEP), a custódia deve respeitar os princípios da legalidade e da dignidade humana.</p>
-                    <p><span class="paragraph-title">Desenvolvimento 2:</span>Em segundo lugar, a operacionalidade cotidiana exige preparo técnico e constante atualização. Treinamentos, protocolos de segurança e uso adequado de recursos tecnológicos contribuem para prevenir fugas e rebeliões. A título de exemplo, programas de capacitação periódica em diferentes estados demonstram resultados positivos, em consonância com a Declaração Universal dos Direitos Humanos (DUDH).</p>
-                    <p><span class="paragraph-title">Desenvolvimento 3:</span>Cumpre destacar, ainda, a relevância da reintegração social e da valorização profissional. O incentivo ao trabalho, à educação e ao fortalecimento dos vínculos familiares reduz significativamente a reincidência, conforme previsto no Estatuto da Criança e do Adolescente (ECA) e em políticas de reinserção. Paralelamente, a valorização do servidor eleva sua motivação e eficiência, fortalecendo a segurança institucional.</p>
-                    <p><span class="paragraph-title">Conclusão:</span>Portanto, reafirma-se que o enfrentamento do tema demanda medidas coordenadas e efetivas. Compete ao Estado, por intermédio da Polícia Penal e de políticas públicas integradas, implementar programas de capacitação, ampliar as oportunidades de trabalho e educação para internos e assegurar condições adequadas aos servidores, com o objetivo de garantir disciplina, ordem e reinserção social.</p>
+                    <p><span class="paragraph-title">Introdução:</span>Entre os aspectos referentes a direitos humanos e
+                        segurança no sistema prisional, três pontos merecem destaque especial: o primeiro vincula-se à
+                        base legal que fundamenta a atuação; o segundo relaciona-se à operacionalidade do cotidiano
+                        prisional; e, por fim, à implementação de políticas de reintegração social e valorização
+                        profissional.</p>
+                    <p><span class="paragraph-title">Desenvolvimento 1:</span>Em primeiro lugar, a base legal mostra-se
+                        essencial, pois assegura legitimidade às ações da Polícia Penal. De acordo com a Constituição
+                        Federal de 1988 (CF/88) e a Lei de Execução Penal (LEP), a custódia deve respeitar os princípios
+                        da legalidade e da dignidade humana.</p>
+                    <p><span class="paragraph-title">Desenvolvimento 2:</span>Em segundo lugar, a operacionalidade
+                        cotidiana exige preparo técnico e constante atualização. Treinamentos, protocolos de segurança e
+                        uso adequado de recursos tecnológicos contribuem para prevenir fugas e rebeliões. A título de
+                        exemplo, programas de capacitação periódica em diferentes estados demonstram resultados
+                        positivos, em consonância com a Declaração Universal dos Direitos Humanos (DUDH).</p>
+                    <p><span class="paragraph-title">Desenvolvimento 3:</span>Cumpre destacar, ainda, a relevância da
+                        reintegração social e da valorização profissional. O incentivo ao trabalho, à educação e ao
+                        fortalecimento dos vínculos familiares reduz significativamente a reincidência, conforme
+                        previsto no Estatuto da Criança e do Adolescente (ECA) e em políticas de reinserção.
+                        Paralelamente, a valorização do servidor eleva sua motivação e eficiência, fortalecendo a
+                        segurança institucional.</p>
+                    <p><span class="paragraph-title">Conclusão:</span>Portanto, reafirma-se que o enfrentamento do tema
+                        demanda medidas coordenadas e efetivas. Compete ao Estado, por intermédio da Polícia Penal e de
+                        políticas públicas integradas, implementar programas de capacitação, ampliar as oportunidades de
+                        trabalho e educação para internos e assegurar condições adequadas aos servidores, com o objetivo
+                        de garantir disciplina, ordem e reinserção social.</p>
                 </div>
             </div>
 
             <div id="tema9" class="theme-card">
                 <h3>A prevenção da reincidência criminal</h3>
                 <div class="theme-explanation">
-                    <p><strong>Explicação:</strong> Relevante por medir a eficácia do sistema penal. Bancas exploram programas de educação, trabalho e políticas de reintegração social.</p>
+                    <p><strong>Explicação:</strong> Relevante por medir a eficácia do sistema penal. Bancas exploram
+                        programas de educação, trabalho e políticas de reintegração social.</p>
                 </div>
                 <div class="theme-text">
-                    <p><span class="paragraph-title">Introdução:</span>Entre os aspectos referentes à prevenção da reincidência criminal, três pontos merecem destaque especial: o primeiro vincula-se à base legal que fundamenta a atuação; o segundo relaciona-se à operacionalidade do cotidiano prisional; e, por fim, à implementação de políticas de reintegração social e valorização profissional.</p>
-                    <p><span class="paragraph-title">Desenvolvimento 1:</span>Em primeiro lugar, a base legal mostra-se essencial, pois assegura legitimidade às ações da Polícia Penal. De acordo com a Constituição Federal de 1988 (CF/88) e a Lei de Execução Penal (LEP), a custódia deve respeitar os princípios da legalidade e da dignidade humana.</p>
-                    <p><span class="paragraph-title">Desenvolvimento 2:</span>Em segundo lugar, a operacionalidade cotidiana exige preparo técnico e constante atualização. Treinamentos, protocolos de segurança e uso adequado de recursos tecnológicos contribuem para prevenir fugas e rebeliões. A título de exemplo, programas de capacitação periódica em diferentes estados demonstram resultados positivos, em consonância com a Declaração Universal dos Direitos Humanos (DUDH).</p>
-                    <p><span class="paragraph-title">Desenvolvimento 3:</span>Cumpre destacar, ainda, a relevância da reintegração social e da valorização profissional. O incentivo ao trabalho, à educação e ao fortalecimento dos vínculos familiares reduz significativamente a reincidência, conforme previsto no Estatuto da Criança e do Adolescente (ECA) e em políticas de reinserção. Paralelamente, a valorização do servidor eleva sua motivação e eficiência, fortalecendo a segurança institucional.</p>
-                    <p><span class="paragraph-title">Conclusão:</span>Portanto, reafirma-se que o enfrentamento do tema demanda medidas coordenadas e efetivas. Compete ao Estado, por intermédio da Polícia Penal e de políticas públicas integradas, implementar programas de capacitação, ampliar as oportunidades de trabalho e educação para internos e assegurar condições adequadas aos servidores, com o objetivo de garantir disciplina, ordem e reinserção social.</p>
+                    <p><span class="paragraph-title">Introdução:</span>Entre os aspectos referentes à prevenção da
+                        reincidência criminal, três pontos merecem destaque especial: o primeiro vincula-se à base legal
+                        que fundamenta a atuação; o segundo relaciona-se à operacionalidade do cotidiano prisional; e,
+                        por fim, à implementação de políticas de reintegração social e valorização profissional.</p>
+                    <p><span class="paragraph-title">Desenvolvimento 1:</span>Em primeiro lugar, a base legal mostra-se
+                        essencial, pois assegura legitimidade às ações da Polícia Penal. De acordo com a Constituição
+                        Federal de 1988 (CF/88) e a Lei de Execução Penal (LEP), a custódia deve respeitar os princípios
+                        da legalidade e da dignidade humana.</p>
+                    <p><span class="paragraph-title">Desenvolvimento 2:</span>Em segundo lugar, a operacionalidade
+                        cotidiana exige preparo técnico e constante atualização. Treinamentos, protocolos de segurança e
+                        uso adequado de recursos tecnológicos contribuem para prevenir fugas e rebeliões. A título de
+                        exemplo, programas de capacitação periódica em diferentes estados demonstram resultados
+                        positivos, em consonância com a Declaração Universal dos Direitos Humanos (DUDH).</p>
+                    <p><span class="paragraph-title">Desenvolvimento 3:</span>Cumpre destacar, ainda, a relevância da
+                        reintegração social e da valorização profissional. O incentivo ao trabalho, à educação e ao
+                        fortalecimento dos vínculos familiares reduz significativamente a reincidência, conforme
+                        previsto no Estatuto da Criança e do Adolescente (ECA) e em políticas de reinserção.
+                        Paralelamente, a valorização do servidor eleva sua motivação e eficiência, fortalecendo a
+                        segurança institucional.</p>
+                    <p><span class="paragraph-title">Conclusão:</span>Portanto, reafirma-se que o enfrentamento do tema
+                        demanda medidas coordenadas e efetivas. Compete ao Estado, por intermédio da Polícia Penal e de
+                        políticas públicas integradas, implementar programas de capacitação, ampliar as oportunidades de
+                        trabalho e educação para internos e assegurar condições adequadas aos servidores, com o objetivo
+                        de garantir disciplina, ordem e reinserção social.</p>
                 </div>
             </div>
 
             <div id="tema10" class="theme-card">
                 <h3>O trabalho prisional como instrumento de ressocialização</h3>
                 <div class="theme-explanation">
-                    <p><strong>Explicação:</strong> Previsto na Lei de Execução Penal (LEP), é tratado em concursos como medida de disciplina e oportunidade de reintegração.</p>
+                    <p><strong>Explicação:</strong> Previsto na Lei de Execução Penal (LEP), é tratado em concursos como
+                        medida de disciplina e oportunidade de reintegração.</p>
                 </div>
                 <div class="theme-text">
-                    <p><span class="paragraph-title">Introdução:</span>Entre os aspectos referentes ao trabalho prisional como instrumento de ressocialização, três pontos merecem destaque especial: o primeiro vincula-se à base legal que fundamenta a atuação; o segundo relaciona-se à operacionalidade do cotidiano prisional; e, por fim, à implementação de políticas de reintegração social e valorização profissional.</p>
-                    <p><span class="paragraph-title">Desenvolvimento 1:</span>Em primeiro lugar, a base legal mostra-se essencial, pois assegura legitimidade às ações da Polícia Penal. De acordo com a Constituição Federal de 1988 (CF/88) e a Lei de Execução Penal (LEP), a custódia deve respeitar os princípios da legalidade e da dignidade humana.</p>
-                    <p><span class="paragraph-title">Desenvolvimento 2:</span>Em segundo lugar, a operacionalidade cotidiana exige preparo técnico e constante atualização. Treinamentos, protocolos de segurança e uso adequado de recursos tecnológicos contribuem para prevenir fugas e rebeliões. A título de exemplo, programas de capacitação periódica em diferentes estados demonstram resultados positivos, em consonância com a Declaração Universal dos Direitos Humanos (DUDH).</p>
-                    <p><span class="paragraph-title">Desenvolvimento 3:</span>Cumpre destacar, ainda, a relevância da reintegração social e da valorização profissional. O incentivo ao trabalho, à educação e ao fortalecimento dos vínculos familiares reduz significativamente a reincidência, conforme previsto no Estatuto da Criança e do Adolescente (ECA) e em políticas de reinserção. Paralelamente, a valorização do servidor eleva sua motivação e eficiência, fortalecendo a segurança institucional.</p>
-                    <p><span class="paragraph-title">Conclusão:</span>Portanto, reafirma-se que o enfrentamento do tema demanda medidas coordenadas e efetivas. Compete ao Estado, por intermédio da Polícia Penal e de políticas públicas integradas, implementar programas de capacitação, ampliar as oportunidades de trabalho e educação para internos e assegurar condições adequadas aos servidores, com o objetivo de garantir disciplina, ordem e reinserção social.</p>
+                    <p><span class="paragraph-title">Introdução:</span>Entre os aspectos referentes ao trabalho
+                        prisional como instrumento de ressocialização, três pontos merecem destaque especial: o primeiro
+                        vincula-se à base legal que fundamenta a atuação; o segundo relaciona-se à operacionalidade do
+                        cotidiano prisional; e, por fim, à implementação de políticas de reintegração social e
+                        valorização profissional.</p>
+                    <p><span class="paragraph-title">Desenvolvimento 1:</span>Em primeiro lugar, a base legal mostra-se
+                        essencial, pois assegura legitimidade às ações da Polícia Penal. De acordo com a Constituição
+                        Federal de 1988 (CF/88) e a Lei de Execução Penal (LEP), a custódia deve respeitar os princípios
+                        da legalidade e da dignidade humana.</p>
+                    <p><span class="paragraph-title">Desenvolvimento 2:</span>Em segundo lugar, a operacionalidade
+                        cotidiana exige preparo técnico e constante atualização. Treinamentos, protocolos de segurança e
+                        uso adequado de recursos tecnológicos contribuem para prevenir fugas e rebeliões. A título de
+                        exemplo, programas de capacitação periódica em diferentes estados demonstram resultados
+                        positivos, em consonância com a Declaração Universal dos Direitos Humanos (DUDH).</p>
+                    <p><span class="paragraph-title">Desenvolvimento 3:</span>Cumpre destacar, ainda, a relevância da
+                        reintegração social e da valorização profissional. O incentivo ao trabalho, à educação e ao
+                        fortalecimento dos vínculos familiares reduz significativamente a reincidência, conforme
+                        previsto no Estatuto da Criança e do Adolescente (ECA) e em políticas de reinserção.
+                        Paralelamente, a valorização do servidor eleva sua motivação e eficiência, fortalecendo a
+                        segurança institucional.</p>
+                    <p><span class="paragraph-title">Conclusão:</span>Portanto, reafirma-se que o enfrentamento do tema
+                        demanda medidas coordenadas e efetivas. Compete ao Estado, por intermédio da Polícia Penal e de
+                        políticas públicas integradas, implementar programas de capacitação, ampliar as oportunidades de
+                        trabalho e educação para internos e assegurar condições adequadas aos servidores, com o objetivo
+                        de garantir disciplina, ordem e reinserção social.</p>
                 </div>
             </div>
 
             <div id="tema11" class="theme-card">
                 <h3>A educação como ferramenta de reinserção social do preso</h3>
                 <div class="theme-explanation">
-                    <p><strong>Explicação:</strong> Questão ligada à escolarização e qualificação, previstas na Constituição Federal de 1988 (CF/88) como direitos fundamentais.</p>
+                    <p><strong>Explicação:</strong> Questão ligada à escolarização e qualificação, previstas na
+                        Constituição Federal de 1988 (CF/88) como direitos fundamentais.</p>
                 </div>
                 <div class="theme-text">
-                    <p><span class="paragraph-title">Introdução:</span>Entre os aspectos referentes à educação como ferramenta de reinserção social do preso, três pontos merecem destaque especial: o primeiro vincula-se à base legal que fundamenta a atuação; o segundo relaciona-se à operacionalidade do cotidiano prisional; e, por fim, à implementação de políticas de reintegração social e valorização profissional.</p>
-                    <p><span class="paragraph-title">Desenvolvimento 1:</span>Em primeiro lugar, a base legal mostra-se essencial, pois assegura legitimidade às ações da Polícia Penal. De acordo com a Constituição Federal de 1988 (CF/88) e a Lei de Execução Penal (LEP), a custódia deve respeitar os princípios da legalidade e da dignidade humana.</p>
-                    <p><span class="paragraph-title">Desenvolvimento 2:</span>Em segundo lugar, a operacionalidade cotidiana exige preparo técnico e constante atualização. Treinamentos, protocolos de segurança e uso adequado de recursos tecnológicos contribuem para prevenir fugas e rebeliões. A título de exemplo, programas de capacitação periódica em diferentes estados demonstram resultados positivos, em consonância com a Declaração Universal dos Direitos Humanos (DUDH).</p>
-                    <p><span class="paragraph-title">Desenvolvimento 3:</span>Cumpre destacar, ainda, a relevância da reintegração social e da valorização profissional. O incentivo ao trabalho, à educação e ao fortalecimento dos vínculos familiares reduz significativamente a reincidência, conforme previsto no Estatuto da Criança e do Adolescente (ECA) e em políticas de reinserção. Paralelamente, a valorização do servidor eleva sua motivação e eficiência, fortalecendo a segurança institucional.</p>
-                    <p><span class="paragraph-title">Conclusão:</span>Portanto, reafirma-se que o enfrentamento do tema demanda medidas coordenadas e efetivas. Compete ao Estado, por intermédio da Polícia Penal e de políticas públicas integradas, implementar programas de capacitação, ampliar as oportunidades de trabalho e educação para internos e assegurar condições adequadas aos servidores, com o objetivo de garantir disciplina, ordem e reinserção social.</p>
+                    <p><span class="paragraph-title">Introdução:</span>Entre os aspectos referentes à educação como
+                        ferramenta de reinserção social do preso, três pontos merecem destaque especial: o primeiro
+                        vincula-se à base legal que fundamenta a atuação; o segundo relaciona-se à operacionalidade do
+                        cotidiano prisional; e, por fim, à implementação de políticas de reintegração social e
+                        valorização profissional.</p>
+                    <p><span class="paragraph-title">Desenvolvimento 1:</span>Em primeiro lugar, a base legal mostra-se
+                        essencial, pois assegura legitimidade às ações da Polícia Penal. De acordo com a Constituição
+                        Federal de 1988 (CF/88) e a Lei de Execução Penal (LEP), a custódia deve respeitar os princípios
+                        da legalidade e da dignidade humana.</p>
+                    <p><span class="paragraph-title">Desenvolvimento 2:</span>Em segundo lugar, a operacionalidade
+                        cotidiana exige preparo técnico e constante atualização. Treinamentos, protocolos de segurança e
+                        uso adequado de recursos tecnológicos contribuem para prevenir fugas e rebeliões. A título de
+                        exemplo, programas de capacitação periódica em diferentes estados demonstram resultados
+                        positivos, em consonância com a Declaração Universal dos Direitos Humanos (DUDH).</p>
+                    <p><span class="paragraph-title">Desenvolvimento 3:</span>Cumpre destacar, ainda, a relevância da
+                        reintegração social e da valorização profissional. O incentivo ao trabalho, à educação e ao
+                        fortalecimento dos vínculos familiares reduz significativamente a reincidência, conforme
+                        previsto no Estatuto da Criança e do Adolescente (ECA) e em políticas de reinserção.
+                        Paralelamente, a valorização do servidor eleva sua motivação e eficiência, fortalecendo a
+                        segurança institucional.</p>
+                    <p><span class="paragraph-title">Conclusão:</span>Portanto, reafirma-se que o enfrentamento do tema
+                        demanda medidas coordenadas e efetivas. Compete ao Estado, por intermédio da Polícia Penal e de
+                        políticas públicas integradas, implementar programas de capacitação, ampliar as oportunidades de
+                        trabalho e educação para internos e assegurar condições adequadas aos servidores, com o objetivo
+                        de garantir disciplina, ordem e reinserção social.</p>
                 </div>
             </div>
 
             <div id="tema12" class="theme-card">
                 <h3>O enfrentamento das facções criminosas dentro das prisões</h3>
                 <div class="theme-explanation">
-                    <p><strong>Explicação:</strong> Problema de segurança nacional, explorado em provas que abordam inteligência prisional e cooperação entre órgãos de segurança.</p>
+                    <p><strong>Explicação:</strong> Problema de segurança nacional, explorado em provas que abordam
+                        inteligência prisional e cooperação entre órgãos de segurança.</p>
                 </div>
                 <div class="theme-text">
-                    <p><span class="paragraph-title">Introdução:</span>Entre os aspectos referentes ao enfrentamento das facções criminosas dentro das prisões, três pontos merecem destaque especial: o primeiro vincula-se à base legal que fundamenta a atuação; o segundo relaciona-se à operacionalidade do cotidiano prisional; e, por fim, à implementação de políticas de reintegração social e valorização profissional.</p>
-                    <p><span class="paragraph-title">Desenvolvimento 1:</span>Em primeiro lugar, a base legal mostra-se essencial, pois assegura legitimidade às ações da Polícia Penal. De acordo com a Constituição Federal de 1988 (CF/88) e a Lei de Execução Penal (LEP), a custódia deve respeitar os princípios da legalidade e da dignidade humana.</p>
-                    <p><span class="paragraph-title">Desenvolvimento 2:</span>Em segundo lugar, a operacionalidade cotidiana exige preparo técnico e constante atualização. Treinamentos, protocolos de segurança e uso adequado de recursos tecnológicos contribuem para prevenir fugas e rebeliões. A título de exemplo, programas de capacitação periódica em diferentes estados demonstram resultados positivos, em consonância com a Declaração Universal dos Direitos Humanos (DUDH).</p>
-                    <p><span class="paragraph-title">Desenvolvimento 3:</span>Cumpre destacar, ainda, a relevância da reintegração social e da valorização profissional. O incentivo ao trabalho, à educação e ao fortalecimento dos vínculos familiares reduz significativamente a reincidência, conforme previsto no Estatuto da Criança e do Adolescente (ECA) e em políticas de reinserção. Paralelamente, a valorização do servidor eleva sua motivação e eficiência, fortalecendo a segurança institucional.</p>
-                    <p><span class="paragraph-title">Conclusão:</span>Portanto, reafirma-se que o enfrentamento do tema demanda medidas coordenadas e efetivas. Compete ao Estado, por intermédio da Polícia Penal e de políticas públicas integradas, implementar programas de capacitação, ampliar as oportunidades de trabalho e educação para internos e assegurar condições adequadas aos servidores, com o objetivo de garantir disciplina, ordem e reinserção social.</p>
+                    <p><span class="paragraph-title">Introdução:</span>Entre os aspectos referentes ao enfrentamento das
+                        facções criminosas dentro das prisões, três pontos merecem destaque especial: o primeiro
+                        vincula-se à base legal que fundamenta a atuação; o segundo relaciona-se à operacionalidade do
+                        cotidiano prisional; e, por fim, à implementação de políticas de reintegração social e
+                        valorização profissional.</p>
+                    <p><span class="paragraph-title">Desenvolvimento 1:</span>Em primeiro lugar, a base legal mostra-se
+                        essencial, pois assegura legitimidade às ações da Polícia Penal. De acordo com a Constituição
+                        Federal de 1988 (CF/88) e a Lei de Execução Penal (LEP), a custódia deve respeitar os princípios
+                        da legalidade e da dignidade humana.</p>
+                    <p><span class="paragraph-title">Desenvolvimento 2:</span>Em segundo lugar, a operacionalidade
+                        cotidiana exige preparo técnico e constante atualização. Treinamentos, protocolos de segurança e
+                        uso adequado de recursos tecnológicos contribuem para prevenir fugas e rebeliões. A título de
+                        exemplo, programas de capacitação periódica em diferentes estados demonstram resultados
+                        positivos, em consonância com a Declaração Universal dos Direitos Humanos (DUDH).</p>
+                    <p><span class="paragraph-title">Desenvolvimento 3:</span>Cumpre destacar, ainda, a relevância da
+                        reintegração social e da valorização profissional. O incentivo ao trabalho, à educação e ao
+                        fortalecimento dos vínculos familiares reduz significativamente a reincidência, conforme
+                        previsto no Estatuto da Criança e do Adolescente (ECA) e em políticas de reinserção.
+                        Paralelamente, a valorização do servidor eleva sua motivação e eficiência, fortalecendo a
+                        segurança institucional.</p>
+                    <p><span class="paragraph-title">Conclusão:</span>Portanto, reafirma-se que o enfrentamento do tema
+                        demanda medidas coordenadas e efetivas. Compete ao Estado, por intermédio da Polícia Penal e de
+                        políticas públicas integradas, implementar programas de capacitação, ampliar as oportunidades de
+                        trabalho e educação para internos e assegurar condições adequadas aos servidores, com o objetivo
+                        de garantir disciplina, ordem e reinserção social.</p>
                 </div>
             </div>
 
             <div id="tema13" class="theme-card">
                 <h3>O uso de tornozeleiras eletrônicas como alternativa ao cárcere</h3>
                 <div class="theme-explanation">
-                    <p><strong>Explicação:</strong> Assunto recente, previsto no Código de Processo Penal (CPP), adotado para reduzir superlotação.</p>
+                    <p><strong>Explicação:</strong> Assunto recente, previsto no Código de Processo Penal (CPP), adotado
+                        para reduzir superlotação.</p>
                 </div>
                 <div class="theme-text">
-                    <p><span class="paragraph-title">Introdução:</span>Entre os aspectos referentes ao uso de tornozeleiras eletrônicas como alternativa ao cárcere, três pontos merecem destaque especial: o primeiro vincula-se à base legal que fundamenta a atuação; o segundo relaciona-se à operacionalidade do cotidiano prisional; e, por fim, à implementação de políticas de reintegração social e valorização profissional.</p>
-                    <p><span class="paragraph-title">Desenvolvimento 1:</span>Em primeiro lugar, a base legal mostra-se essencial, pois assegura legitimidade às ações da Polícia Penal. De acordo com a Constituição Federal de 1988 (CF/88) e a Lei de Execução Penal (LEP), a custódia deve respeitar os princípios da legalidade e da dignidade humana.</p>
-                    <p><span class="paragraph-title">Desenvolvimento 2:</span>Em segundo lugar, a operacionalidade cotidiana exige preparo técnico e constante atualização. Treinamentos, protocolos de segurança e uso adequado de recursos tecnológicos contribuem para prevenir fugas e rebeliões. A título de exemplo, programas de capacitação periódica em diferentes estados demonstram resultados positivos, em consonância com a Declaração Universal dos Direitos Humanos (DUDH).</p>
-                    <p><span class="paragraph-title">Desenvolvimento 3:</span>Cumpre destacar, ainda, a relevância da reintegração social e da valorização profissional. O incentivo ao trabalho, à educação e ao fortalecimento dos vínculos familiares reduz significativamente a reincidência, conforme previsto no Estatuto da Criança e do Adolescente (ECA) e em políticas de reinserção. Paralelamente, a valorização do servidor eleva sua motivação e eficiência, fortalecendo a segurança institucional.</p>
-                    <p><span class="paragraph-title">Conclusão:</span>Portanto, reafirma-se que o enfrentamento do tema demanda medidas coordenadas e efetivas. Compete ao Estado, por intermédio da Polícia Penal e de políticas públicas integradas, implementar programas de capacitação, ampliar as oportunidades de trabalho e educação para internos e assegurar condições adequadas aos servidores, com o objetivo de garantir disciplina, ordem e reinserção social.</p>
+                    <p><span class="paragraph-title">Introdução:</span>Entre os aspectos referentes ao uso de
+                        tornozeleiras eletrônicas como alternativa ao cárcere, três pontos merecem destaque especial: o
+                        primeiro vincula-se à base legal que fundamenta a atuação; o segundo relaciona-se à
+                        operacionalidade do cotidiano prisional; e, por fim, à implementação de políticas de
+                        reintegração social e valorização profissional.</p>
+                    <p><span class="paragraph-title">Desenvolvimento 1:</span>Em primeiro lugar, a base legal mostra-se
+                        essencial, pois assegura legitimidade às ações da Polícia Penal. De acordo com a Constituição
+                        Federal de 1988 (CF/88) e a Lei de Execução Penal (LEP), a custódia deve respeitar os princípios
+                        da legalidade e da dignidade humana.</p>
+                    <p><span class="paragraph-title">Desenvolvimento 2:</span>Em segundo lugar, a operacionalidade
+                        cotidiana exige preparo técnico e constante atualização. Treinamentos, protocolos de segurança e
+                        uso adequado de recursos tecnológicos contribuem para prevenir fugas e rebeliões. A título de
+                        exemplo, programas de capacitação periódica em diferentes estados demonstram resultados
+                        positivos, em consonância com a Declaração Universal dos Direitos Humanos (DUDH).</p>
+                    <p><span class="paragraph-title">Desenvolvimento 3:</span>Cumpre destacar, ainda, a relevância da
+                        reintegração social e da valorização profissional. O incentivo ao trabalho, à educação e ao
+                        fortalecimento dos vínculos familiares reduz significativamente a reincidência, conforme
+                        previsto no Estatuto da Criança e do Adolescente (ECA) e em políticas de reinserção.
+                        Paralelamente, a valorização do servidor eleva sua motivação e eficiência, fortalecendo a
+                        segurança institucional.</p>
+                    <p><span class="paragraph-title">Conclusão:</span>Portanto, reafirma-se que o enfrentamento do tema
+                        demanda medidas coordenadas e efetivas. Compete ao Estado, por intermédio da Polícia Penal e de
+                        políticas públicas integradas, implementar programas de capacitação, ampliar as oportunidades de
+                        trabalho e educação para internos e assegurar condições adequadas aos servidores, com o objetivo
+                        de garantir disciplina, ordem e reinserção social.</p>
                 </div>
             </div>
 
             <div id="tema14" class="theme-card">
                 <h3>Assistência jurídica gratuita e sua importância no sistema penal</h3>
                 <div class="theme-explanation">
-                    <p><strong>Explicação:</strong> Direito assegurado pela Constituição Federal de 1988 (CF/88), essencial para a ampla defesa e acesso à justiça.</p>
+                    <p><strong>Explicação:</strong> Direito assegurado pela Constituição Federal de 1988 (CF/88),
+                        essencial para a ampla defesa e acesso à justiça.</p>
                 </div>
                 <div class="theme-text">
-                    <p><span class="paragraph-title">Introdução:</span>Entre os aspectos referentes a assistência jurídica gratuita e sua importância no sistema penal, três pontos merecem destaque especial: o primeiro vincula-se à base legal que fundamenta a atuação; o segundo relaciona-se à operacionalidade do cotidiano prisional; e, por fim, à implementação de políticas de reintegração social e valorização profissional.</p>
-                    <p><span class="paragraph-title">Desenvolvimento 1:</span>Em primeiro lugar, a base legal mostra-se essencial, pois assegura legitimidade às ações da Polícia Penal. De acordo com a Constituição Federal de 1988 (CF/88) e a Lei de Execução Penal (LEP), a custódia deve respeitar os princípios da legalidade e da dignidade humana.</p>
-                    <p><span class="paragraph-title">Desenvolvimento 2:</span>Em segundo lugar, a operacionalidade cotidiana exige preparo técnico e constante atualização. Treinamentos, protocolos de segurança e uso adequado de recursos tecnológicos contribuem para prevenir fugas e rebeliões. A título de exemplo, programas de capacitação periódica em diferentes estados demonstram resultados positivos, em consonância com a Declaração Universal dos Direitos Humanos (DUDH).</p>
-                    <p><span class="paragraph-title">Desenvolvimento 3:</span>Cumpre destacar, ainda, a relevância da reintegração social e da valorização profissional. O incentivo ao trabalho, à educação e ao fortalecimento dos vínculos familiares reduz significativamente a reincidência, conforme previsto no Estatuto da Criança e do Adolescente (ECA) e em políticas de reinserção. Paralelamente, a valorização do servidor eleva sua motivação e eficiência, fortalecendo a segurança institucional.</p>
-                    <p><span class="paragraph-title">Conclusão:</span>Portanto, reafirma-se que o enfrentamento do tema demanda medidas coordenadas e efetivas. Compete ao Estado, por intermédio da Polícia Penal e de políticas públicas integradas, implementar programas de capacitação, ampliar as oportunidades de trabalho e educação para internos e assegurar condições adequadas aos servidores, com o objetivo de garantir disciplina, ordem e reinserção social.</p>
+                    <p><span class="paragraph-title">Introdução:</span>Entre os aspectos referentes a assistência
+                        jurídica gratuita e sua importância no sistema penal, três pontos merecem destaque especial: o
+                        primeiro vincula-se à base legal que fundamenta a atuação; o segundo relaciona-se à
+                        operacionalidade do cotidiano prisional; e, por fim, à implementação de políticas de
+                        reintegração social e valorização profissional.</p>
+                    <p><span class="paragraph-title">Desenvolvimento 1:</span>Em primeiro lugar, a base legal mostra-se
+                        essencial, pois assegura legitimidade às ações da Polícia Penal. De acordo com a Constituição
+                        Federal de 1988 (CF/88) e a Lei de Execução Penal (LEP), a custódia deve respeitar os princípios
+                        da legalidade e da dignidade humana.</p>
+                    <p><span class="paragraph-title">Desenvolvimento 2:</span>Em segundo lugar, a operacionalidade
+                        cotidiana exige preparo técnico e constante atualização. Treinamentos, protocolos de segurança e
+                        uso adequado de recursos tecnológicos contribuem para prevenir fugas e rebeliões. A título de
+                        exemplo, programas de capacitação periódica em diferentes estados demonstram resultados
+                        positivos, em consonância com a Declaração Universal dos Direitos Humanos (DUDH).</p>
+                    <p><span class="paragraph-title">Desenvolvimento 3:</span>Cumpre destacar, ainda, a relevância da
+                        reintegração social e da valorização profissional. O incentivo ao trabalho, à educação e ao
+                        fortalecimento dos vínculos familiares reduz significativamente a reincidência, conforme
+                        previsto no Estatuto da Criança e do Adolescente (ECA) e em políticas de reinserção.
+                        Paralelamente, a valorização do servidor eleva sua motivação e eficiência, fortalecendo a
+                        segurança institucional.</p>
+                    <p><span class="paragraph-title">Conclusão:</span>Portanto, reafirma-se que o enfrentamento do tema
+                        demanda medidas coordenadas e efetivas. Compete ao Estado, por intermédio da Polícia Penal e de
+                        políticas públicas integradas, implementar programas de capacitação, ampliar as oportunidades de
+                        trabalho e educação para internos e assegurar condições adequadas aos servidores, com o objetivo
+                        de garantir disciplina, ordem e reinserção social.</p>
                 </div>
             </div>
 
             <div id="tema15" class="theme-card">
                 <h3>O papel da Polícia Penal na custódia de presos provisórios</h3>
                 <div class="theme-explanation">
-                    <p><strong>Explicação:</strong> Tema relevante após a Emenda Constitucional nº 104/2019, que atribuiu essa responsabilidade à Polícia Penal.</p>
+                    <p><strong>Explicação:</strong> Tema relevante após a Emenda Constitucional nº 104/2019, que
+                        atribuiu essa responsabilidade à Polícia Penal.</p>
                 </div>
                 <div class="theme-text">
-                    <p><span class="paragraph-title">Introdução:</span>Entre os aspectos referentes ao papel da polícia penal na custódia de presos provisórios, três pontos merecem destaque especial: o primeiro vincula-se à base legal que fundamenta a atuação; o segundo relaciona-se à operacionalidade do cotidiano prisional; e, por fim, à implementação de políticas de reintegração social e valorização profissional.</p>
-                    <p><span class="paragraph-title">Desenvolvimento 1:</span>Em primeiro lugar, a base legal mostra-se essencial, pois assegura legitimidade às ações da Polícia Penal. De acordo com a Constituição Federal de 1988 (CF/88) e a Lei de Execução Penal (LEP), a custódia deve respeitar os princípios da legalidade e da dignidade humana.</p>
-                    <p><span class="paragraph-title">Desenvolvimento 2:</span>Em segundo lugar, a operacionalidade cotidiana exige preparo técnico e constante atualização. Treinamentos, protocolos de segurança e uso adequado de recursos tecnológicos contribuem para prevenir fugas e rebeliões. A título de exemplo, programas de capacitação periódica em diferentes estados demonstram resultados positivos, em consonância com a Declaração Universal dos Direitos Humanos (DUDH).</p>
-                    <p><span class="paragraph-title">Desenvolvimento 3:</span>Cumpre destacar, ainda, a relevância da reintegração social e da valorização profissional. O incentivo ao trabalho, à educação e ao fortalecimento dos vínculos familiares reduz significativamente a reincidência, conforme previsto no Estatuto da Criança e do Adolescente (ECA) e em políticas de reinserção. Paralelamente, a valorização do servidor eleva sua motivação e eficiência, fortalecendo a segurança institucional.</p>
-                    <p><span class="paragraph-title">Conclusão:</span>Portanto, reafirma-se que o enfrentamento do tema demanda medidas coordenadas e efetivas. Compete ao Estado, por intermédio da Polícia Penal e de políticas públicas integradas, implementar programas de capacitação, ampliar as oportunidades de trabalho e educação para internos e assegurar condições adequadas aos servidores, com o objetivo de garantir disciplina, ordem e reinserção social.</p>
+                    <p><span class="paragraph-title">Introdução:</span>Entre os aspectos referentes ao papel da polícia
+                        penal na custódia de presos provisórios, três pontos merecem destaque especial: o primeiro
+                        vincula-se à base legal que fundamenta a atuação; o segundo relaciona-se à operacionalidade do
+                        cotidiano prisional; e, por fim, à implementação de políticas de reintegração social e
+                        valorização profissional.</p>
+                    <p><span class="paragraph-title">Desenvolvimento 1:</span>Em primeiro lugar, a base legal mostra-se
+                        essencial, pois assegura legitimidade às ações da Polícia Penal. De acordo com a Constituição
+                        Federal de 1988 (CF/88) e a Lei de Execução Penal (LEP), a custódia deve respeitar os princípios
+                        da legalidade e da dignidade humana.</p>
+                    <p><span class="paragraph-title">Desenvolvimento 2:</span>Em segundo lugar, a operacionalidade
+                        cotidiana exige preparo técnico e constante atualização. Treinamentos, protocolos de segurança e
+                        uso adequado de recursos tecnológicos contribuem para prevenir fugas e rebeliões. A título de
+                        exemplo, programas de capacitação periódica em diferentes estados demonstram resultados
+                        positivos, em consonância com a Declaração Universal dos Direitos Humanos (DUDH).</p>
+                    <p><span class="paragraph-title">Desenvolvimento 3:</span>Cumpre destacar, ainda, a relevância da
+                        reintegração social e da valorização profissional. O incentivo ao trabalho, à educação e ao
+                        fortalecimento dos vínculos familiares reduz significativamente a reincidência, conforme
+                        previsto no Estatuto da Criança e do Adolescente (ECA) e em políticas de reinserção.
+                        Paralelamente, a valorização do servidor eleva sua motivação e eficiência, fortalecendo a
+                        segurança institucional.</p>
+                    <p><span class="paragraph-title">Conclusão:</span>Portanto, reafirma-se que o enfrentamento do tema
+                        demanda medidas coordenadas e efetivas. Compete ao Estado, por intermédio da Polícia Penal e de
+                        políticas públicas integradas, implementar programas de capacitação, ampliar as oportunidades de
+                        trabalho e educação para internos e assegurar condições adequadas aos servidores, com o objetivo
+                        de garantir disciplina, ordem e reinserção social.</p>
                 </div>
             </div>
 
             <div id="tema16" class="theme-card">
                 <h3>A segurança dos policiais penais e as condições de trabalho</h3>
                 <div class="theme-explanation">
-                    <p><strong>Explicação:</strong> Questão prática e recorrente, ligada ao dever estatal de garantir proteção e infraestrutura adequada aos servidores.</p>
+                    <p><strong>Explicação:</strong> Questão prática e recorrente, ligada ao dever estatal de garantir
+                        proteção e infraestrutura adequada aos servidores.</p>
                 </div>
                 <div class="theme-text">
-                    <p><span class="paragraph-title">Introdução:</span>Entre os aspectos referentes à segurança dos policiais penais e as condições de trabalho, três pontos merecem destaque especial: o primeiro vincula-se à base legal que fundamenta a atuação; o segundo relaciona-se à operacionalidade do cotidiano prisional; e, por fim, à implementação de políticas de reintegração social e valorização profissional.</p>
-                    <p><span class="paragraph-title">Desenvolvimento 1:</span>Em primeiro lugar, a base legal mostra-se essencial, pois assegura legitimidade às ações da Polícia Penal. De acordo com a Constituição Federal de 1988 (CF/88) e a Lei de Execução Penal (LEP), a custódia deve respeitar os princípios da legalidade e da dignidade humana.</p>
-                    <p><span class="paragraph-title">Desenvolvimento 2:</span>Em segundo lugar, a operacionalidade cotidiana exige preparo técnico e constante atualização. Treinamentos, protocolos de segurança e uso adequado de recursos tecnológicos contribuem para prevenir fugas e rebeliões. A título de exemplo, programas de capacitação periódica em diferentes estados demonstram resultados positivos, em consonância com a Declaração Universal dos Direitos Humanos (DUDH).</p>
-                    <p><span class="paragraph-title">Desenvolvimento 3:</span>Cumpre destacar, ainda, a relevância da reintegração social e da valorização profissional. O incentivo ao trabalho, à educação e ao fortalecimento dos vínculos familiares reduz significativamente a reincidência, conforme previsto no Estatuto da Criança e do Adolescente (ECA) e em políticas de reinserção. Paralelamente, a valorização do servidor eleva sua motivação e eficiência, fortalecendo a segurança institucional.</p>
-                    <p><span class="paragraph-title">Conclusão:</span>Portanto, reafirma-se que o enfrentamento do tema demanda medidas coordenadas e efetivas. Compete ao Estado, por intermédio da Polícia Penal e de políticas públicas integradas, implementar programas de capacitação, ampliar as oportunidades de trabalho e educação para internos e assegurar condições adequadas aos servidores, com o objetivo de garantir disciplina, ordem e reinserção social.</p>
+                    <p><span class="paragraph-title">Introdução:</span>Entre os aspectos referentes à segurança dos
+                        policiais penais e as condições de trabalho, três pontos merecem destaque especial: o primeiro
+                        vincula-se à base legal que fundamenta a atuação; o segundo relaciona-se à operacionalidade do
+                        cotidiano prisional; e, por fim, à implementação de políticas de reintegração social e
+                        valorização profissional.</p>
+                    <p><span class="paragraph-title">Desenvolvimento 1:</span>Em primeiro lugar, a base legal mostra-se
+                        essencial, pois assegura legitimidade às ações da Polícia Penal. De acordo com a Constituição
+                        Federal de 1988 (CF/88) e a Lei de Execução Penal (LEP), a custódia deve respeitar os princípios
+                        da legalidade e da dignidade humana.</p>
+                    <p><span class="paragraph-title">Desenvolvimento 2:</span>Em segundo lugar, a operacionalidade
+                        cotidiana exige preparo técnico e constante atualização. Treinamentos, protocolos de segurança e
+                        uso adequado de recursos tecnológicos contribuem para prevenir fugas e rebeliões. A título de
+                        exemplo, programas de capacitação periódica em diferentes estados demonstram resultados
+                        positivos, em consonância com a Declaração Universal dos Direitos Humanos (DUDH).</p>
+                    <p><span class="paragraph-title">Desenvolvimento 3:</span>Cumpre destacar, ainda, a relevância da
+                        reintegração social e da valorização profissional. O incentivo ao trabalho, à educação e ao
+                        fortalecimento dos vínculos familiares reduz significativamente a reincidência, conforme
+                        previsto no Estatuto da Criança e do Adolescente (ECA) e em políticas de reinserção.
+                        Paralelamente, a valorização do servidor eleva sua motivação e eficiência, fortalecendo a
+                        segurança institucional.</p>
+                    <p><span class="paragraph-title">Conclusão:</span>Portanto, reafirma-se que o enfrentamento do tema
+                        demanda medidas coordenadas e efetivas. Compete ao Estado, por intermédio da Polícia Penal e de
+                        políticas públicas integradas, implementar programas de capacitação, ampliar as oportunidades de
+                        trabalho e educação para internos e assegurar condições adequadas aos servidores, com o objetivo
+                        de garantir disciplina, ordem e reinserção social.</p>
                 </div>
             </div>
 
             <div id="tema17" class="theme-card">
                 <h3>A participação da família no processo de ressocialização</h3>
                 <div class="theme-explanation">
-                    <p><strong>Explicação:</strong> Explorado em concursos ao mostrar que vínculos familiares fortalecem reintegração, conforme diretrizes do Estatuto da Criança e do Adolescente (ECA).</p>
+                    <p><strong>Explicação:</strong> Explorado em concursos ao mostrar que vínculos familiares fortalecem
+                        reintegração, conforme diretrizes do Estatuto da Criança e do Adolescente (ECA).</p>
                 </div>
                 <div class="theme-text">
-                    <p><span class="paragraph-title">Introdução:</span>Entre os aspectos referentes à participação da família no processo de ressocialização, três pontos merecem destaque especial: o primeiro vincula-se à base legal que fundamenta a atuação; o segundo relaciona-se à operacionalidade do cotidiano prisional; e, por fim, à implementação de políticas de reintegração social e valorização profissional.</p>
-                    <p><span class="paragraph-title">Desenvolvimento 1:</span>Em primeiro lugar, a base legal mostra-se essencial, pois assegura legitimidade às ações da Polícia Penal. De acordo com a Constituição Federal de 1988 (CF/88) e a Lei de Execução Penal (LEP), a custódia deve respeitar os princípios da legalidade e da dignidade humana.</p>
-                    <p><span class="paragraph-title">Desenvolvimento 2:</span>Em segundo lugar, a operacionalidade cotidiana exige preparo técnico e constante atualização. Treinamentos, protocolos de segurança e uso adequado de recursos tecnológicos contribuem para prevenir fugas e rebeliões. A título de exemplo, programas de capacitação periódica em diferentes estados demonstram resultados positivos, em consonância com a Declaração Universal dos Direitos Humanos (DUDH).</p>
-                    <p><span class="paragraph-title">Desenvolvimento 3:</span>Cumpre destacar, ainda, a relevância da reintegração social e da valorização profissional. O incentivo ao trabalho, à educação e ao fortalecimento dos vínculos familiares reduz significativamente a reincidência, conforme previsto no Estatuto da Criança e do Adolescente (ECA) e em políticas de reinserção. Paralelamente, a valorização do servidor eleva sua motivação e eficiência, fortalecendo a segurança institucional.</p>
-                    <p><span class="paragraph-title">Conclusão:</span>Portanto, reafirma-se que o enfrentamento do tema demanda medidas coordenadas e efetivas. Compete ao Estado, por intermédio da Polícia Penal e de políticas públicas integradas, implementar programas de capacitação, ampliar as oportunidades de trabalho e educação para internos e assegurar condições adequadas aos servidores, com o objetivo de garantir disciplina, ordem e reinserção social.</p>
+                    <p><span class="paragraph-title">Introdução:</span>Entre os aspectos referentes à participação da
+                        família no processo de ressocialização, três pontos merecem destaque especial: o primeiro
+                        vincula-se à base legal que fundamenta a atuação; o segundo relaciona-se à operacionalidade do
+                        cotidiano prisional; e, por fim, à implementação de políticas de reintegração social e
+                        valorização profissional.</p>
+                    <p><span class="paragraph-title">Desenvolvimento 1:</span>Em primeiro lugar, a base legal mostra-se
+                        essencial, pois assegura legitimidade às ações da Polícia Penal. De acordo com a Constituição
+                        Federal de 1988 (CF/88) e a Lei de Execução Penal (LEP), a custódia deve respeitar os princípios
+                        da legalidade e da dignidade humana.</p>
+                    <p><span class="paragraph-title">Desenvolvimento 2:</span>Em segundo lugar, a operacionalidade
+                        cotidiana exige preparo técnico e constante atualização. Treinamentos, protocolos de segurança e
+                        uso adequado de recursos tecnológicos contribuem para prevenir fugas e rebeliões. A título de
+                        exemplo, programas de capacitação periódica em diferentes estados demonstram resultados
+                        positivos, em consonância com a Declaração Universal dos Direitos Humanos (DUDH).</p>
+                    <p><span class="paragraph-title">Desenvolvimento 3:</span>Cumpre destacar, ainda, a relevância da
+                        reintegração social e da valorização profissional. O incentivo ao trabalho, à educação e ao
+                        fortalecimento dos vínculos familiares reduz significativamente a reincidência, conforme
+                        previsto no Estatuto da Criança e do Adolescente (ECA) e em políticas de reinserção.
+                        Paralelamente, a valorização do servidor eleva sua motivação e eficiência, fortalecendo a
+                        segurança institucional.</p>
+                    <p><span class="paragraph-title">Conclusão:</span>Portanto, reafirma-se que o enfrentamento do tema
+                        demanda medidas coordenadas e efetivas. Compete ao Estado, por intermédio da Polícia Penal e de
+                        políticas públicas integradas, implementar programas de capacitação, ampliar as oportunidades de
+                        trabalho e educação para internos e assegurar condições adequadas aos servidores, com o objetivo
+                        de garantir disciplina, ordem e reinserção social.</p>
                 </div>
             </div>
 
             <div id="tema18" class="theme-card">
                 <h3>A importância da disciplina e hierarquia no sistema prisional</h3>
                 <div class="theme-explanation">
-                    <p><strong>Explicação:</strong> Tema clássico em provas policiais, associado à manutenção da ordem e à hierarquia prevista na CF/88.</p>
+                    <p><strong>Explicação:</strong> Tema clássico em provas policiais, associado à manutenção da ordem e
+                        à hierarquia prevista na CF/88.</p>
                 </div>
                 <div class="theme-text">
-                    <p><span class="paragraph-title">Introdução:</span>Entre os aspectos referentes à importância da disciplina e hierarquia no sistema prisional, três pontos merecem destaque especial: o primeiro vincula-se à base legal que fundamenta a atuação; o segundo relaciona-se à operacionalidade do cotidiano prisional; e, por fim, à implementação de políticas de reintegração social e valorização profissional.</p>
-                    <p><span class="paragraph-title">Desenvolvimento 1:</span>Em primeiro lugar, a base legal mostra-se essencial, pois assegura legitimidade às ações da Polícia Penal. De acordo com a Constituição Federal de 1988 (CF/88) e a Lei de Execução Penal (LEP), a custódia deve respeitar os princípios da legalidade e da dignidade humana.</p>
-                    <p><span class="paragraph-title">Desenvolvimento 2:</span>Em segundo lugar, a operacionalidade cotidiana exige preparo técnico e constante atualização. Treinamentos, protocolos de segurança e uso adequado de recursos tecnológicos contribuem para prevenir fugas e rebeliões. A título de exemplo, programas de capacitação periódica em diferentes estados demonstram resultados positivos, em consonância com a Declaração Universal dos Direitos Humanos (DUDH).</p>
-                    <p><span class="paragraph-title">Desenvolvimento 3:</span>Cumpre destacar, ainda, a relevância da reintegração social e da valorização profissional. O incentivo ao trabalho, à educação e ao fortalecimento dos vínculos familiares reduz significativamente a reincidência, conforme previsto no Estatuto da Criança e do Adolescente (ECA) e em políticas de reinserção. Paralelamente, a valorização do servidor eleva sua motivação e eficiência, fortalecendo a segurança institucional.</p>
-                    <p><span class="paragraph-title">Conclusão:</span>Portanto, reafirma-se que o enfrentamento do tema demanda medidas coordenadas e efetivas. Compete ao Estado, por intermédio da Polícia Penal e de políticas públicas integradas, implementar programas de capacitação, ampliar as oportunidades de trabalho e educação para internos e assegurar condições adequadas aos servidores, com o objetivo de garantir disciplina, ordem e reinserção social.</p>
+                    <p><span class="paragraph-title">Introdução:</span>Entre os aspectos referentes à importância da
+                        disciplina e hierarquia no sistema prisional, três pontos merecem destaque especial: o primeiro
+                        vincula-se à base legal que fundamenta a atuação; o segundo relaciona-se à operacionalidade do
+                        cotidiano prisional; e, por fim, à implementação de políticas de reintegração social e
+                        valorização profissional.</p>
+                    <p><span class="paragraph-title">Desenvolvimento 1:</span>Em primeiro lugar, a base legal mostra-se
+                        essencial, pois assegura legitimidade às ações da Polícia Penal. De acordo com a Constituição
+                        Federal de 1988 (CF/88) e a Lei de Execução Penal (LEP), a custódia deve respeitar os princípios
+                        da legalidade e da dignidade humana.</p>
+                    <p><span class="paragraph-title">Desenvolvimento 2:</span>Em segundo lugar, a operacionalidade
+                        cotidiana exige preparo técnico e constante atualização. Treinamentos, protocolos de segurança e
+                        uso adequado de recursos tecnológicos contribuem para prevenir fugas e rebeliões. A título de
+                        exemplo, programas de capacitação periódica em diferentes estados demonstram resultados
+                        positivos, em consonância com a Declaração Universal dos Direitos Humanos (DUDH).</p>
+                    <p><span class="paragraph-title">Desenvolvimento 3:</span>Cumpre destacar, ainda, a relevância da
+                        reintegração social e da valorização profissional. O incentivo ao trabalho, à educação e ao
+                        fortalecimento dos vínculos familiares reduz significativamente a reincidência, conforme
+                        previsto no Estatuto da Criança e do Adolescente (ECA) e em políticas de reinserção.
+                        Paralelamente, a valorização do servidor eleva sua motivação e eficiência, fortalecendo a
+                        segurança institucional.</p>
+                    <p><span class="paragraph-title">Conclusão:</span>Portanto, reafirma-se que o enfrentamento do tema
+                        demanda medidas coordenadas e efetivas. Compete ao Estado, por intermédio da Polícia Penal e de
+                        políticas públicas integradas, implementar programas de capacitação, ampliar as oportunidades de
+                        trabalho e educação para internos e assegurar condições adequadas aos servidores, com o objetivo
+                        de garantir disciplina, ordem e reinserção social.</p>
                 </div>
             </div>
 
             <div id="tema19" class="theme-card">
                 <h3>A evasão de presos e medidas de prevenção</h3>
                 <div class="theme-explanation">
-                    <p><strong>Explicação:</strong> Problema recorrente e de alto impacto, exigindo protocolos de segurança e planejamento estratégico.</p>
+                    <p><strong>Explicação:</strong> Problema recorrente e de alto impacto, exigindo protocolos de
+                        segurança e planejamento estratégico.</p>
                 </div>
                 <div class="theme-text">
-                    <p><span class="paragraph-title">Introdução:</span>Entre os aspectos referentes à evasão de presos e medidas de prevenção, três pontos merecem destaque especial: o primeiro vincula-se à base legal que fundamenta a atuação; o segundo relaciona-se à operacionalidade do cotidiano prisional; e, por fim, à implementação de políticas de reintegração social e valorização profissional.</p>
-                    <p><span class="paragraph-title">Desenvolvimento 1:</span>Em primeiro lugar, a base legal mostra-se essencial, pois assegura legitimidade às ações da Polícia Penal. De acordo com a Constituição Federal de 1988 (CF/88) e a Lei de Execução Penal (LEP), a custódia deve respeitar os princípios da legalidade e da dignidade humana.</p>
-                    <p><span class="paragraph-title">Desenvolvimento 2:</span>Em segundo lugar, a operacionalidade cotidiana exige preparo técnico e constante atualização. Treinamentos, protocolos de segurança e uso adequado de recursos tecnológicos contribuem para prevenir fugas e rebeliões. A título de exemplo, programas de capacitação periódica em diferentes estados demonstram resultados positivos, em consonância com a Declaração Universal dos Direitos Humanos (DUDH).</p>
-                    <p><span class="paragraph-title">Desenvolvimento 3:</span>Cumpre destacar, ainda, a relevância da reintegração social e da valorização profissional. O incentivo ao trabalho, à educação e ao fortalecimento dos vínculos familiares reduz significativamente a reincidência, conforme previsto no Estatuto da Criança e do Adolescente (ECA) e em políticas de reinserção. Paralelamente, a valorização do servidor eleva sua motivação e eficiência, fortalecendo a segurança institucional.</p>
-                    <p><span class="paragraph-title">Conclusão:</span>Portanto, reafirma-se que o enfrentamento do tema demanda medidas coordenadas e efetivas. Compete ao Estado, por intermédio da Polícia Penal e de políticas públicas integradas, implementar programas de capacitação, ampliar as oportunidades de trabalho e educação para internos e assegurar condições adequadas aos servidores, com o objetivo de garantir disciplina, ordem e reinserção social.</p>
+                    <p><span class="paragraph-title">Introdução:</span>Entre os aspectos referentes à evasão de presos e
+                        medidas de prevenção, três pontos merecem destaque especial: o primeiro vincula-se à base legal
+                        que fundamenta a atuação; o segundo relaciona-se à operacionalidade do cotidiano prisional; e,
+                        por fim, à implementação de políticas de reintegração social e valorização profissional.</p>
+                    <p><span class="paragraph-title">Desenvolvimento 1:</span>Em primeiro lugar, a base legal mostra-se
+                        essencial, pois assegura legitimidade às ações da Polícia Penal. De acordo com a Constituição
+                        Federal de 1988 (CF/88) e a Lei de Execução Penal (LEP), a custódia deve respeitar os princípios
+                        da legalidade e da dignidade humana.</p>
+                    <p><span class="paragraph-title">Desenvolvimento 2:</span>Em segundo lugar, a operacionalidade
+                        cotidiana exige preparo técnico e constante atualização. Treinamentos, protocolos de segurança e
+                        uso adequado de recursos tecnológicos contribuem para prevenir fugas e rebeliões. A título de
+                        exemplo, programas de capacitação periódica em diferentes estados demonstram resultados
+                        positivos, em consonância com a Declaração Universal dos Direitos Humanos (DUDH).</p>
+                    <p><span class="paragraph-title">Desenvolvimento 3:</span>Cumpre destacar, ainda, a relevância da
+                        reintegração social e da valorização profissional. O incentivo ao trabalho, à educação e ao
+                        fortalecimento dos vínculos familiares reduz significativamente a reincidência, conforme
+                        previsto no Estatuto da Criança e do Adolescente (ECA) e em políticas de reinserção.
+                        Paralelamente, a valorização do servidor eleva sua motivação e eficiência, fortalecendo a
+                        segurança institucional.</p>
+                    <p><span class="paragraph-title">Conclusão:</span>Portanto, reafirma-se que o enfrentamento do tema
+                        demanda medidas coordenadas e efetivas. Compete ao Estado, por intermédio da Polícia Penal e de
+                        políticas públicas integradas, implementar programas de capacitação, ampliar as oportunidades de
+                        trabalho e educação para internos e assegurar condições adequadas aos servidores, com o objetivo
+                        de garantir disciplina, ordem e reinserção social.</p>
                 </div>
             </div>
 
             <div id="tema20" class="theme-card">
                 <h3>Políticas de combate às drogas dentro do sistema prisional</h3>
                 <div class="theme-explanation">
-                    <p><strong>Explicação:</strong> Questão comum em provas, relacionada a segurança, disciplina e saúde pública.</p>
+                    <p><strong>Explicação:</strong> Questão comum em provas, relacionada a segurança, disciplina e saúde
+                        pública.</p>
                 </div>
                 <div class="theme-text">
-                    <p><span class="paragraph-title">Introdução:</span>Entre os aspectos referentes a políticas de combate às drogas dentro do sistema prisional, três pontos merecem destaque especial: o primeiro vincula-se à base legal que fundamenta a atuação; o segundo relaciona-se à operacionalidade do cotidiano prisional; e, por fim, à implementação de políticas de reintegração social e valorização profissional.</p>
-                    <p><span class="paragraph-title">Desenvolvimento 1:</span>Em primeiro lugar, a base legal mostra-se essencial, pois assegura legitimidade às ações da Polícia Penal. De acordo com a Constituição Federal de 1988 (CF/88) e a Lei de Execução Penal (LEP), a custódia deve respeitar os princípios da legalidade e da dignidade humana.</p>
-                    <p><span class="paragraph-title">Desenvolvimento 2:</span>Em segundo lugar, a operacionalidade cotidiana exige preparo técnico e constante atualização. Treinamentos, protocolos de segurança e uso adequado de recursos tecnológicos contribuem para prevenir fugas e rebeliões. A título de exemplo, programas de capacitação periódica em diferentes estados demonstram resultados positivos, em consonância com a Declaração Universal dos Direitos Humanos (DUDH).</p>
-                    <p><span class="paragraph-title">Desenvolvimento 3:</span>Cumpre destacar, ainda, a relevância da reintegração social e da valorização profissional. O incentivo ao trabalho, à educação e ao fortalecimento dos vínculos familiares reduz significativamente a reincidência, conforme previsto no Estatuto da Criança e do Adolescente (ECA) e em políticas de reinserção. Paralelamente, a valorização do servidor eleva sua motivação e eficiência, fortalecendo a segurança institucional.</p>
-                    <p><span class="paragraph-title">Conclusão:</span>Portanto, reafirma-se que o enfrentamento do tema demanda medidas coordenadas e efetivas. Compete ao Estado, por intermédio da Polícia Penal e de políticas públicas integradas, implementar programas de capacitação, ampliar as oportunidades de trabalho e educação para internos e assegurar condições adequadas aos servidores, com o objetivo de garantir disciplina, ordem e reinserção social.</p>
+                    <p><span class="paragraph-title">Introdução:</span>Entre os aspectos referentes a políticas de
+                        combate às drogas dentro do sistema prisional, três pontos merecem destaque especial: o primeiro
+                        vincula-se à base legal que fundamenta a atuação; o segundo relaciona-se à operacionalidade do
+                        cotidiano prisional; e, por fim, à implementação de políticas de reintegração social e
+                        valorização profissional.</p>
+                    <p><span class="paragraph-title">Desenvolvimento 1:</span>Em primeiro lugar, a base legal mostra-se
+                        essencial, pois assegura legitimidade às ações da Polícia Penal. De acordo com a Constituição
+                        Federal de 1988 (CF/88) e a Lei de Execução Penal (LEP), a custódia deve respeitar os princípios
+                        da legalidade e da dignidade humana.</p>
+                    <p><span class="paragraph-title">Desenvolvimento 2:</span>Em segundo lugar, a operacionalidade
+                        cotidiana exige preparo técnico e constante atualização. Treinamentos, protocolos de segurança e
+                        uso adequado de recursos tecnológicos contribuem para prevenir fugas e rebeliões. A título de
+                        exemplo, programas de capacitação periódica em diferentes estados demonstram resultados
+                        positivos, em consonância com a Declaração Universal dos Direitos Humanos (DUDH).</p>
+                    <p><span class="paragraph-title">Desenvolvimento 3:</span>Cumpre destacar, ainda, a relevância da
+                        reintegração social e da valorização profissional. O incentivo ao trabalho, à educação e ao
+                        fortalecimento dos vínculos familiares reduz significativamente a reincidência, conforme
+                        previsto no Estatuto da Criança e do Adolescente (ECA) e em políticas de reinserção.
+                        Paralelamente, a valorização do servidor eleva sua motivação e eficiência, fortalecendo a
+                        segurança institucional.</p>
+                    <p><span class="paragraph-title">Conclusão:</span>Portanto, reafirma-se que o enfrentamento do tema
+                        demanda medidas coordenadas e efetivas. Compete ao Estado, por intermédio da Polícia Penal e de
+                        políticas públicas integradas, implementar programas de capacitação, ampliar as oportunidades de
+                        trabalho e educação para internos e assegurar condições adequadas aos servidores, com o objetivo
+                        de garantir disciplina, ordem e reinserção social.</p>
                 </div>
             </div>
 
             <div id="tema21" class="theme-card">
                 <h3>A dignidade da pessoa humana no ambiente carcerário</h3>
                 <div class="theme-explanation">
-                    <p><strong>Explicação:</strong> Princípio central da Constituição Federal de 1988 (CF/88) e da Declaração Universal dos Direitos Humanos (DUDH), sempre cobrado em concursos.</p>
+                    <p><strong>Explicação:</strong> Princípio central da Constituição Federal de 1988 (CF/88) e da
+                        Declaração Universal dos Direitos Humanos (DUDH), sempre cobrado em concursos.</p>
                 </div>
                 <div class="theme-text">
-                    <p><span class="paragraph-title">Introdução:</span>Entre os aspectos referentes à dignidade da pessoa humana no ambiente carcerário, três pontos merecem destaque especial: o primeiro vincula-se à base legal que fundamenta a atuação; o segundo relaciona-se à operacionalidade do cotidiano prisional; e, por fim, à implementação de políticas de reintegração social e valorização profissional.</p>
-                    <p><span class="paragraph-title">Desenvolvimento 1:</span>Em primeiro lugar, a base legal mostra-se essencial, pois assegura legitimidade às ações da Polícia Penal. De acordo com a Constituição Federal de 1988 (CF/88) e a Lei de Execução Penal (LEP), a custódia deve respeitar os princípios da legalidade e da dignidade humana.</p>
-                    <p><span class="paragraph-title">Desenvolvimento 2:</span>Em segundo lugar, a operacionalidade cotidiana exige preparo técnico e constante atualização. Treinamentos, protocolos de segurança e uso adequado de recursos tecnológicos contribuem para prevenir fugas e rebeliões. A título de exemplo, programas de capacitação periódica em diferentes estados demonstram resultados positivos, em consonância com a Declaração Universal dos Direitos Humanos (DUDH).</p>
-                    <p><span class="paragraph-title">Desenvolvimento 3:</span>Cumpre destacar, ainda, a relevância da reintegração social e da valorização profissional. O incentivo ao trabalho, à educação e ao fortalecimento dos vínculos familiares reduz significativamente a reincidência, conforme previsto no Estatuto da Criança e do Adolescente (ECA) e em políticas de reinserção. Paralelamente, a valorização do servidor eleva sua motivação e eficiência, fortalecendo a segurança institucional.</p>
-                    <p><span class="paragraph-title">Conclusão:</span>Portanto, reafirma-se que o enfrentamento do tema demanda medidas coordenadas e efetivas. Compete ao Estado, por intermédio da Polícia Penal e de políticas públicas integradas, implementar programas de capacitação, ampliar as oportunidades de trabalho e educação para internos e assegurar condições adequadas aos servidores, com o objetivo de garantir disciplina, ordem e reinserção social.</p>
+                    <p><span class="paragraph-title">Introdução:</span>Entre os aspectos referentes à dignidade da
+                        pessoa humana no ambiente carcerário, três pontos merecem destaque especial: o primeiro
+                        vincula-se à base legal que fundamenta a atuação; o segundo relaciona-se à operacionalidade do
+                        cotidiano prisional; e, por fim, à implementação de políticas de reintegração social e
+                        valorização profissional.</p>
+                    <p><span class="paragraph-title">Desenvolvimento 1:</span>Em primeiro lugar, a base legal mostra-se
+                        essencial, pois assegura legitimidade às ações da Polícia Penal. De acordo com a Constituição
+                        Federal de 1988 (CF/88) e a Lei de Execução Penal (LEP), a custódia deve respeitar os princípios
+                        da legalidade e da dignidade humana.</p>
+                    <p><span class="paragraph-title">Desenvolvimento 2:</span>Em segundo lugar, a operacionalidade
+                        cotidiana exige preparo técnico e constante atualização. Treinamentos, protocolos de segurança e
+                        uso adequado de recursos tecnológicos contribuem para prevenir fugas e rebeliões. A título de
+                        exemplo, programas de capacitação periódica em diferentes estados demonstram resultados
+                        positivos, em consonância com a Declaração Universal dos Direitos Humanos (DUDH).</p>
+                    <p><span class="paragraph-title">Desenvolvimento 3:</span>Cumpre destacar, ainda, a relevância da
+                        reintegração social e da valorização profissional. O incentivo ao trabalho, à educação e ao
+                        fortalecimento dos vínculos familiares reduz significativamente a reincidência, conforme
+                        previsto no Estatuto da Criança e do Adolescente (ECA) e em políticas de reinserção.
+                        Paralelamente, a valorização do servidor eleva sua motivação e eficiência, fortalecendo a
+                        segurança institucional.</p>
+                    <p><span class="paragraph-title">Conclusão:</span>Portanto, reafirma-se que o enfrentamento do tema
+                        demanda medidas coordenadas e efetivas. Compete ao Estado, por intermédio da Polícia Penal e de
+                        políticas públicas integradas, implementar programas de capacitação, ampliar as oportunidades de
+                        trabalho e educação para internos e assegurar condições adequadas aos servidores, com o objetivo
+                        de garantir disciplina, ordem e reinserção social.</p>
                 </div>
             </div>
 
             <div id="tema22" class="theme-card">
                 <h3>A reintegração social do egresso do sistema prisional</h3>
                 <div class="theme-explanation">
-                    <p><strong>Explicação:</strong> Questão importante por tratar do período pós-pena e da redução da reincidência.</p>
+                    <p><strong>Explicação:</strong> Questão importante por tratar do período pós-pena e da redução da
+                        reincidência.</p>
                 </div>
                 <div class="theme-text">
-                    <p><span class="paragraph-title">Introdução:</span>Entre os aspectos referentes à reintegração social do egresso do sistema prisional, três pontos merecem destaque especial: o primeiro vincula-se à base legal que fundamenta a atuação; o segundo relaciona-se à operacionalidade do cotidiano prisional; e, por fim, à implementação de políticas de reintegração social e valorização profissional.</p>
-                    <p><span class="paragraph-title">Desenvolvimento 1:</span>Em primeiro lugar, a base legal mostra-se essencial, pois assegura legitimidade às ações da Polícia Penal. De acordo com a Constituição Federal de 1988 (CF/88) e a Lei de Execução Penal (LEP), a custódia deve respeitar os princípios da legalidade e da dignidade humana.</p>
-                    <p><span class="paragraph-title">Desenvolvimento 2:</span>Em segundo lugar, a operacionalidade cotidiana exige preparo técnico e constante atualização. Treinamentos, protocolos de segurança e uso adequado de recursos tecnológicos contribuem para prevenir fugas e rebeliões. A título de exemplo, programas de capacitação periódica em diferentes estados demonstram resultados positivos, em consonância com a Declaração Universal dos Direitos Humanos (DUDH).</p>
-                    <p><span class="paragraph-title">Desenvolvimento 3:</span>Cumpre destacar, ainda, a relevância da reintegração social e da valorização profissional. O incentivo ao trabalho, à educação e ao fortalecimento dos vínculos familiares reduz significativamente a reincidência, conforme previsto no Estatuto da Criança e do Adolescente (ECA) e em políticas de reinserção. Paralelamente, a valorização do servidor eleva sua motivação e eficiência, fortalecendo a segurança institucional.</p>
-                    <p><span class="paragraph-title">Conclusão:</span>Portanto, reafirma-se que o enfrentamento do tema demanda medidas coordenadas e efetivas. Compete ao Estado, por intermédio da Polícia Penal e de políticas públicas integradas, implementar programas de capacitação, ampliar as oportunidades de trabalho e educação para internos e assegurar condições adequadas aos servidores, com o objetivo de garantir disciplina, ordem e reinserção social.</p>
+                    <p><span class="paragraph-title">Introdução:</span>Entre os aspectos referentes à reintegração
+                        social do egresso do sistema prisional, três pontos merecem destaque especial: o primeiro
+                        vincula-se à base legal que fundamenta a atuação; o segundo relaciona-se à operacionalidade do
+                        cotidiano prisional; e, por fim, à implementação de políticas de reintegração social e
+                        valorização profissional.</p>
+                    <p><span class="paragraph-title">Desenvolvimento 1:</span>Em primeiro lugar, a base legal mostra-se
+                        essencial, pois assegura legitimidade às ações da Polícia Penal. De acordo com a Constituição
+                        Federal de 1988 (CF/88) e a Lei de Execução Penal (LEP), a custódia deve respeitar os princípios
+                        da legalidade e da dignidade humana.</p>
+                    <p><span class="paragraph-title">Desenvolvimento 2:</span>Em segundo lugar, a operacionalidade
+                        cotidiana exige preparo técnico e constante atualização. Treinamentos, protocolos de segurança e
+                        uso adequado de recursos tecnológicos contribuem para prevenir fugas e rebeliões. A título de
+                        exemplo, programas de capacitação periódica em diferentes estados demonstram resultados
+                        positivos, em consonância com a Declaração Universal dos Direitos Humanos (DUDH).</p>
+                    <p><span class="paragraph-title">Desenvolvimento 3:</span>Cumpre destacar, ainda, a relevância da
+                        reintegração social e da valorização profissional. O incentivo ao trabalho, à educação e ao
+                        fortalecimento dos vínculos familiares reduz significativamente a reincidência, conforme
+                        previsto no Estatuto da Criança e do Adolescente (ECA) e em políticas de reinserção.
+                        Paralelamente, a valorização do servidor eleva sua motivação e eficiência, fortalecendo a
+                        segurança institucional.</p>
+                    <p><span class="paragraph-title">Conclusão:</span>Portanto, reafirma-se que o enfrentamento do tema
+                        demanda medidas coordenadas e efetivas. Compete ao Estado, por intermédio da Polícia Penal e de
+                        políticas públicas integradas, implementar programas de capacitação, ampliar as oportunidades de
+                        trabalho e educação para internos e assegurar condições adequadas aos servidores, com o objetivo
+                        de garantir disciplina, ordem e reinserção social.</p>
                 </div>
             </div>
 
             <div id="tema23" class="theme-card">
                 <h3>Mulheres no sistema prisional: especificidades e desafios</h3>
                 <div class="theme-explanation">
-                    <p><strong>Explicação:</strong> Tema atual que envolve saúde materna, direitos reprodutivos e condições específicas de encarceramento.</p>
+                    <p><strong>Explicação:</strong> Tema atual que envolve saúde materna, direitos reprodutivos e
+                        condições específicas de encarceramento.</p>
                 </div>
                 <div class="theme-text">
-                    <p><span class="paragraph-title">Introdução:</span>Entre os aspectos referentes a mulheres no sistema prisional: especificidades e desafios, três pontos merecem destaque especial: o primeiro vincula-se à base legal que fundamenta a atuação; o segundo relaciona-se à operacionalidade do cotidiano prisional; e, por fim, à implementação de políticas de reintegração social e valorização profissional.</p>
-                    <p><span class="paragraph-title">Desenvolvimento 1:</span>Em primeiro lugar, a base legal mostra-se essencial, pois assegura legitimidade às ações da Polícia Penal. De acordo com a Constituição Federal de 1988 (CF/88) e a Lei de Execução Penal (LEP), a custódia deve respeitar os princípios da legalidade e da dignidade humana.</p>
-                    <p><span class="paragraph-title">Desenvolvimento 2:</span>Em segundo lugar, a operacionalidade cotidiana exige preparo técnico e constante atualização. Treinamentos, protocolos de segurança e uso adequado de recursos tecnológicos contribuem para prevenir fugas e rebeliões. A título de exemplo, programas de capacitação periódica em diferentes estados demonstram resultados positivos, em consonância com a Declaração Universal dos Direitos Humanos (DUDH).</p>
-                    <p><span class="paragraph-title">Desenvolvimento 3:</span>Cumpre destacar, ainda, a relevância da reintegração social e da valorização profissional. O incentivo ao trabalho, à educação e ao fortalecimento dos vínculos familiares reduz significativamente a reincidência, conforme previsto no Estatuto da Criança e do Adolescente (ECA) e em políticas de reinserção. Paralelamente, a valorização do servidor eleva sua motivação e eficiência, fortalecendo a segurança institucional.</p>
-                    <p><span class="paragraph-title">Conclusão:</span>Portanto, reafirma-se que o enfrentamento do tema demanda medidas coordenadas e efetivas. Compete ao Estado, por intermédio da Polícia Penal e de políticas públicas integradas, implementar programas de capacitação, ampliar as oportunidades de trabalho e educação para internos e assegurar condições adequadas aos servidores, com o objetivo de garantir disciplina, ordem e reinserção social.</p>
+                    <p><span class="paragraph-title">Introdução:</span>Entre os aspectos referentes a mulheres no
+                        sistema prisional: especificidades e desafios, três pontos merecem destaque especial: o primeiro
+                        vincula-se à base legal que fundamenta a atuação; o segundo relaciona-se à operacionalidade do
+                        cotidiano prisional; e, por fim, à implementação de políticas de reintegração social e
+                        valorização profissional.</p>
+                    <p><span class="paragraph-title">Desenvolvimento 1:</span>Em primeiro lugar, a base legal mostra-se
+                        essencial, pois assegura legitimidade às ações da Polícia Penal. De acordo com a Constituição
+                        Federal de 1988 (CF/88) e a Lei de Execução Penal (LEP), a custódia deve respeitar os princípios
+                        da legalidade e da dignidade humana.</p>
+                    <p><span class="paragraph-title">Desenvolvimento 2:</span>Em segundo lugar, a operacionalidade
+                        cotidiana exige preparo técnico e constante atualização. Treinamentos, protocolos de segurança e
+                        uso adequado de recursos tecnológicos contribuem para prevenir fugas e rebeliões. A título de
+                        exemplo, programas de capacitação periódica em diferentes estados demonstram resultados
+                        positivos, em consonância com a Declaração Universal dos Direitos Humanos (DUDH).</p>
+                    <p><span class="paragraph-title">Desenvolvimento 3:</span>Cumpre destacar, ainda, a relevância da
+                        reintegração social e da valorização profissional. O incentivo ao trabalho, à educação e ao
+                        fortalecimento dos vínculos familiares reduz significativamente a reincidência, conforme
+                        previsto no Estatuto da Criança e do Adolescente (ECA) e em políticas de reinserção.
+                        Paralelamente, a valorização do servidor eleva sua motivação e eficiência, fortalecendo a
+                        segurança institucional.</p>
+                    <p><span class="paragraph-title">Conclusão:</span>Portanto, reafirma-se que o enfrentamento do tema
+                        demanda medidas coordenadas e efetivas. Compete ao Estado, por intermédio da Polícia Penal e de
+                        políticas públicas integradas, implementar programas de capacitação, ampliar as oportunidades de
+                        trabalho e educação para internos e assegurar condições adequadas aos servidores, com o objetivo
+                        de garantir disciplina, ordem e reinserção social.</p>
                 </div>
             </div>
 
             <div id="tema24" class="theme-card">
                 <h3>A pandemia e os impactos no sistema prisional</h3>
                 <div class="theme-explanation">
-                    <p><strong>Explicação:</strong> Questão contemporânea que aborda protocolos emergenciais, saúde pública e gestão de crise.</p>
+                    <p><strong>Explicação:</strong> Questão contemporânea que aborda protocolos emergenciais, saúde
+                        pública e gestão de crise.</p>
                 </div>
                 <div class="theme-text">
-                    <p><span class="paragraph-title">Introdução:</span>Entre os aspectos referentes à pandemia e os impactos no sistema prisional, três pontos merecem destaque especial: o primeiro vincula-se à base legal que fundamenta a atuação; o segundo relaciona-se à operacionalidade do cotidiano prisional; e, por fim, à implementação de políticas de reintegração social e valorização profissional.</p>
-                    <p><span class="paragraph-title">Desenvolvimento 1:</span>Em primeiro lugar, a base legal mostra-se essencial, pois assegura legitimidade às ações da Polícia Penal. De acordo com a Constituição Federal de 1988 (CF/88) e a Lei de Execução Penal (LEP), a custódia deve respeitar os princípios da legalidade e da dignidade humana.</p>
-                    <p><span class="paragraph-title">Desenvolvimento 2:</span>Em segundo lugar, a operacionalidade cotidiana exige preparo técnico e constante atualização. Treinamentos, protocolos de segurança e uso adequado de recursos tecnológicos contribuem para prevenir fugas e rebeliões. A título de exemplo, programas de capacitação periódica em diferentes estados demonstram resultados positivos, em consonância com a Declaração Universal dos Direitos Humanos (DUDH).</p>
-                    <p><span class="paragraph-title">Desenvolvimento 3:</span>Cumpre destacar, ainda, a relevância da reintegração social e da valorização profissional. O incentivo ao trabalho, à educação e ao fortalecimento dos vínculos familiares reduz significativamente a reincidência, conforme previsto no Estatuto da Criança e do Adolescente (ECA) e em políticas de reinserção. Paralelamente, a valorização do servidor eleva sua motivação e eficiência, fortalecendo a segurança institucional.</p>
-                    <p><span class="paragraph-title">Conclusão:</span>Portanto, reafirma-se que o enfrentamento do tema demanda medidas coordenadas e efetivas. Compete ao Estado, por intermédio da Polícia Penal e de políticas públicas integradas, implementar programas de capacitação, ampliar as oportunidades de trabalho e educação para internos e assegurar condições adequadas aos servidores, com o objetivo de garantir disciplina, ordem e reinserção social.</p>
+                    <p><span class="paragraph-title">Introdução:</span>Entre os aspectos referentes à pandemia e os
+                        impactos no sistema prisional, três pontos merecem destaque especial: o primeiro vincula-se à
+                        base legal que fundamenta a atuação; o segundo relaciona-se à operacionalidade do cotidiano
+                        prisional; e, por fim, à implementação de políticas de reintegração social e valorização
+                        profissional.</p>
+                    <p><span class="paragraph-title">Desenvolvimento 1:</span>Em primeiro lugar, a base legal mostra-se
+                        essencial, pois assegura legitimidade às ações da Polícia Penal. De acordo com a Constituição
+                        Federal de 1988 (CF/88) e a Lei de Execução Penal (LEP), a custódia deve respeitar os princípios
+                        da legalidade e da dignidade humana.</p>
+                    <p><span class="paragraph-title">Desenvolvimento 2:</span>Em segundo lugar, a operacionalidade
+                        cotidiana exige preparo técnico e constante atualização. Treinamentos, protocolos de segurança e
+                        uso adequado de recursos tecnológicos contribuem para prevenir fugas e rebeliões. A título de
+                        exemplo, programas de capacitação periódica em diferentes estados demonstram resultados
+                        positivos, em consonância com a Declaração Universal dos Direitos Humanos (DUDH).</p>
+                    <p><span class="paragraph-title">Desenvolvimento 3:</span>Cumpre destacar, ainda, a relevância da
+                        reintegração social e da valorização profissional. O incentivo ao trabalho, à educação e ao
+                        fortalecimento dos vínculos familiares reduz significativamente a reincidência, conforme
+                        previsto no Estatuto da Criança e do Adolescente (ECA) e em políticas de reinserção.
+                        Paralelamente, a valorização do servidor eleva sua motivação e eficiência, fortalecendo a
+                        segurança institucional.</p>
+                    <p><span class="paragraph-title">Conclusão:</span>Portanto, reafirma-se que o enfrentamento do tema
+                        demanda medidas coordenadas e efetivas. Compete ao Estado, por intermédio da Polícia Penal e de
+                        políticas públicas integradas, implementar programas de capacitação, ampliar as oportunidades de
+                        trabalho e educação para internos e assegurar condições adequadas aos servidores, com o objetivo
+                        de garantir disciplina, ordem e reinserção social.</p>
                 </div>
             </div>
 
             <div id="tema25" class="theme-card">
                 <h3>A importância da inteligência prisional no combate ao crime</h3>
                 <div class="theme-explanation">
-                    <p><strong>Explicação:</strong> Assunto atual, vinculado ao uso de informações estratégicas para conter facções e prevenir rebeliões.</p>
+                    <p><strong>Explicação:</strong> Assunto atual, vinculado ao uso de informações estratégicas para
+                        conter facções e prevenir rebeliões.</p>
                 </div>
                 <div class="theme-text">
-                    <p><span class="paragraph-title">Introdução:</span>Entre os aspectos referentes à importância da inteligência prisional no combate ao crime, três pontos merecem destaque especial: o primeiro vincula-se à base legal que fundamenta a atuação; o segundo relaciona-se à operacionalidade do cotidiano prisional; e, por fim, à implementação de políticas de reintegração social e valorização profissional.</p>
-                    <p><span class="paragraph-title">Desenvolvimento 1:</span>Em primeiro lugar, a base legal mostra-se essencial, pois assegura legitimidade às ações da Polícia Penal. De acordo com a Constituição Federal de 1988 (CF/88) e a Lei de Execução Penal (LEP), a custódia deve respeitar os princípios da legalidade e da dignidade humana.</p>
-                    <p><span class="paragraph-title">Desenvolvimento 2:</span>Em segundo lugar, a operacionalidade cotidiana exige preparo técnico e constante atualização. Treinamentos, protocolos de segurança e uso adequado de recursos tecnológicos contribuem para prevenir fugas e rebeliões. A título de exemplo, programas de capacitação periódica em diferentes estados demonstram resultados positivos, em consonância com a Declaração Universal dos Direitos Humanos (DUDH).</p>
-                    <p><span class="paragraph-title">Desenvolvimento 3:</span>Cumpre destacar, ainda, a relevância da reintegração social e da valorização profissional. O incentivo ao trabalho, à educação e ao fortalecimento dos vínculos familiares reduz significativamente a reincidência, conforme previsto no Estatuto da Criança e do Adolescente (ECA) e em políticas de reinserção. Paralelamente, a valorização do servidor eleva sua motivação e eficiência, fortalecendo a segurança institucional.</p>
-                    <p><span class="paragraph-title">Conclusão:</span>Portanto, reafirma-se que o enfrentamento do tema demanda medidas coordenadas e efetivas. Compete ao Estado, por intermédio da Polícia Penal e de políticas públicas integradas, implementar programas de capacitação, ampliar as oportunidades de trabalho e educação para internos e assegurar condições adequadas aos servidores, com o objetivo de garantir disciplina, ordem e reinserção social.</p>
+                    <p><span class="paragraph-title">Introdução:</span>Entre os aspectos referentes à importância da
+                        inteligência prisional no combate ao crime, três pontos merecem destaque especial: o primeiro
+                        vincula-se à base legal que fundamenta a atuação; o segundo relaciona-se à operacionalidade do
+                        cotidiano prisional; e, por fim, à implementação de políticas de reintegração social e
+                        valorização profissional.</p>
+                    <p><span class="paragraph-title">Desenvolvimento 1:</span>Em primeiro lugar, a base legal mostra-se
+                        essencial, pois assegura legitimidade às ações da Polícia Penal. De acordo com a Constituição
+                        Federal de 1988 (CF/88) e a Lei de Execução Penal (LEP), a custódia deve respeitar os princípios
+                        da legalidade e da dignidade humana.</p>
+                    <p><span class="paragraph-title">Desenvolvimento 2:</span>Em segundo lugar, a operacionalidade
+                        cotidiana exige preparo técnico e constante atualização. Treinamentos, protocolos de segurança e
+                        uso adequado de recursos tecnológicos contribuem para prevenir fugas e rebeliões. A título de
+                        exemplo, programas de capacitação periódica em diferentes estados demonstram resultados
+                        positivos, em consonância com a Declaração Universal dos Direitos Humanos (DUDH).</p>
+                    <p><span class="paragraph-title">Desenvolvimento 3:</span>Cumpre destacar, ainda, a relevância da
+                        reintegração social e da valorização profissional. O incentivo ao trabalho, à educação e ao
+                        fortalecimento dos vínculos familiares reduz significativamente a reincidência, conforme
+                        previsto no Estatuto da Criança e do Adolescente (ECA) e em políticas de reinserção.
+                        Paralelamente, a valorização do servidor eleva sua motivação e eficiência, fortalecendo a
+                        segurança institucional.</p>
+                    <p><span class="paragraph-title">Conclusão:</span>Portanto, reafirma-se que o enfrentamento do tema
+                        demanda medidas coordenadas e efetivas. Compete ao Estado, por intermédio da Polícia Penal e de
+                        políticas públicas integradas, implementar programas de capacitação, ampliar as oportunidades de
+                        trabalho e educação para internos e assegurar condições adequadas aos servidores, com o objetivo
+                        de garantir disciplina, ordem e reinserção social.</p>
                 </div>
             </div>
 
             <div id="tema26" class="theme-card">
                 <h3>A violência institucional e suas consequências</h3>
                 <div class="theme-explanation">
-                    <p><strong>Explicação:</strong> Questão crítica, ligada a abusos de autoridade, violações de direitos e necessidade de controle externo.</p>
+                    <p><strong>Explicação:</strong> Questão crítica, ligada a abusos de autoridade, violações de
+                        direitos e necessidade de controle externo.</p>
                 </div>
                 <div class="theme-text">
-                    <p><span class="paragraph-title">Introdução:</span>Entre os aspectos referentes à violência institucional e suas consequências, três pontos merecem destaque especial: o primeiro vincula-se à base legal que fundamenta a atuação; o segundo relaciona-se à operacionalidade do cotidiano prisional; e, por fim, à implementação de políticas de reintegração social e valorização profissional.</p>
-                    <p><span class="paragraph-title">Desenvolvimento 1:</span>Em primeiro lugar, a base legal mostra-se essencial, pois assegura legitimidade às ações da Polícia Penal. De acordo com a Constituição Federal de 1988 (CF/88) e a Lei de Execução Penal (LEP), a custódia deve respeitar os princípios da legalidade e da dignidade humana.</p>
-                    <p><span class="paragraph-title">Desenvolvimento 2:</span>Em segundo lugar, a operacionalidade cotidiana exige preparo técnico e constante atualização. Treinamentos, protocolos de segurança e uso adequado de recursos tecnológicos contribuem para prevenir fugas e rebeliões. A título de exemplo, programas de capacitação periódica em diferentes estados demonstram resultados positivos, em consonância com a Declaração Universal dos Direitos Humanos (DUDH).</p>
-                    <p><span class="paragraph-title">Desenvolvimento 3:</span>Cumpre destacar, ainda, a relevância da reintegração social e da valorização profissional. O incentivo ao trabalho, à educação e ao fortalecimento dos vínculos familiares reduz significativamente a reincidência, conforme previsto no Estatuto da Criança e do Adolescente (ECA) e em políticas de reinserção. Paralelamente, a valorização do servidor eleva sua motivação e eficiência, fortalecendo a segurança institucional.</p>
-                    <p><span class="paragraph-title">Conclusão:</span>Portanto, reafirma-se que o enfrentamento do tema demanda medidas coordenadas e efetivas. Compete ao Estado, por intermédio da Polícia Penal e de políticas públicas integradas, implementar programas de capacitação, ampliar as oportunidades de trabalho e educação para internos e assegurar condições adequadas aos servidores, com o objetivo de garantir disciplina, ordem e reinserção social.</p>
+                    <p><span class="paragraph-title">Introdução:</span>Entre os aspectos referentes à violência
+                        institucional e suas consequências, três pontos merecem destaque especial: o primeiro vincula-se
+                        à base legal que fundamenta a atuação; o segundo relaciona-se à operacionalidade do cotidiano
+                        prisional; e, por fim, à implementação de políticas de reintegração social e valorização
+                        profissional.</p>
+                    <p><span class="paragraph-title">Desenvolvimento 1:</span>Em primeiro lugar, a base legal mostra-se
+                        essencial, pois assegura legitimidade às ações da Polícia Penal. De acordo com a Constituição
+                        Federal de 1988 (CF/88) e a Lei de Execução Penal (LEP), a custódia deve respeitar os princípios
+                        da legalidade e da dignidade humana.</p>
+                    <p><span class="paragraph-title">Desenvolvimento 2:</span>Em segundo lugar, a operacionalidade
+                        cotidiana exige preparo técnico e constante atualização. Treinamentos, protocolos de segurança e
+                        uso adequado de recursos tecnológicos contribuem para prevenir fugas e rebeliões. A título de
+                        exemplo, programas de capacitação periódica em diferentes estados demonstram resultados
+                        positivos, em consonância com a Declaração Universal dos Direitos Humanos (DUDH).</p>
+                    <p><span class="paragraph-title">Desenvolvimento 3:</span>Cumpre destacar, ainda, a relevância da
+                        reintegração social e da valorização profissional. O incentivo ao trabalho, à educação e ao
+                        fortalecimento dos vínculos familiares reduz significativamente a reincidência, conforme
+                        previsto no Estatuto da Criança e do Adolescente (ECA) e em políticas de reinserção.
+                        Paralelamente, a valorização do servidor eleva sua motivação e eficiência, fortalecendo a
+                        segurança institucional.</p>
+                    <p><span class="paragraph-title">Conclusão:</span>Portanto, reafirma-se que o enfrentamento do tema
+                        demanda medidas coordenadas e efetivas. Compete ao Estado, por intermédio da Polícia Penal e de
+                        políticas públicas integradas, implementar programas de capacitação, ampliar as oportunidades de
+                        trabalho e educação para internos e assegurar condições adequadas aos servidores, com o objetivo
+                        de garantir disciplina, ordem e reinserção social.</p>
                 </div>
             </div>
 
             <div id="tema27" class="theme-card">
                 <h3>O papel do psicólogo e assistente social no sistema prisional</h3>
                 <div class="theme-explanation">
-                    <p><strong>Explicação:</strong> Assunto previsto na LEP, que reforça a atuação multidisciplinar como fundamental para a reintegração.</p>
+                    <p><strong>Explicação:</strong> Assunto previsto na LEP, que reforça a atuação multidisciplinar como
+                        fundamental para a reintegração.</p>
                 </div>
                 <div class="theme-text">
-                    <p><span class="paragraph-title">Introdução:</span>Entre os aspectos referentes ao papel do psicólogo e assistente social no sistema prisional, três pontos merecem destaque especial: o primeiro vincula-se à base legal que fundamenta a atuação; o segundo relaciona-se à operacionalidade do cotidiano prisional; e, por fim, à implementação de políticas de reintegração social e valorização profissional.</p>
-                    <p><span class="paragraph-title">Desenvolvimento 1:</span>Em primeiro lugar, a base legal mostra-se essencial, pois assegura legitimidade às ações da Polícia Penal. De acordo com a Constituição Federal de 1988 (CF/88) e a Lei de Execução Penal (LEP), a custódia deve respeitar os princípios da legalidade e da dignidade humana.</p>
-                    <p><span class="paragraph-title">Desenvolvimento 2:</span>Em segundo lugar, a operacionalidade cotidiana exige preparo técnico e constante atualização. Treinamentos, protocolos de segurança e uso adequado de recursos tecnológicos contribuem para prevenir fugas e rebeliões. A título de exemplo, programas de capacitação periódica em diferentes estados demonstram resultados positivos, em consonância com a Declaração Universal dos Direitos Humanos (DUDH).</p>
-                    <p><span class="paragraph-title">Desenvolvimento 3:</span>Cumpre destacar, ainda, a relevância da reintegração social e da valorização profissional. O incentivo ao trabalho, à educação e ao fortalecimento dos vínculos familiares reduz significativamente a reincidência, conforme previsto no Estatuto da Criança e do Adolescente (ECA) e em políticas de reinserção. Paralelamente, a valorização do servidor eleva sua motivação e eficiência, fortalecendo a segurança institucional.</p>
-                    <p><span class="paragraph-title">Conclusão:</span>Portanto, reafirma-se que o enfrentamento do tema demanda medidas coordenadas e efetivas. Compete ao Estado, por intermédio da Polícia Penal e de políticas públicas integradas, implementar programas de capacitação, ampliar as oportunidades de trabalho e educação para internos e assegurar condições adequadas aos servidores, com o objetivo de garantir disciplina, ordem e reinserção social.</p>
+                    <p><span class="paragraph-title">Introdução:</span>Entre os aspectos referentes ao papel do
+                        psicólogo e assistente social no sistema prisional, três pontos merecem destaque especial: o
+                        primeiro vincula-se à base legal que fundamenta a atuação; o segundo relaciona-se à
+                        operacionalidade do cotidiano prisional; e, por fim, à implementação de políticas de
+                        reintegração social e valorização profissional.</p>
+                    <p><span class="paragraph-title">Desenvolvimento 1:</span>Em primeiro lugar, a base legal mostra-se
+                        essencial, pois assegura legitimidade às ações da Polícia Penal. De acordo com a Constituição
+                        Federal de 1988 (CF/88) e a Lei de Execução Penal (LEP), a custódia deve respeitar os princípios
+                        da legalidade e da dignidade humana.</p>
+                    <p><span class="paragraph-title">Desenvolvimento 2:</span>Em segundo lugar, a operacionalidade
+                        cotidiana exige preparo técnico e constante atualização. Treinamentos, protocolos de segurança e
+                        uso adequado de recursos tecnológicos contribuem para prevenir fugas e rebeliões. A título de
+                        exemplo, programas de capacitação periódica em diferentes estados demonstram resultados
+                        positivos, em consonância com a Declaração Universal dos Direitos Humanos (DUDH).</p>
+                    <p><span class="paragraph-title">Desenvolvimento 3:</span>Cumpre destacar, ainda, a relevância da
+                        reintegração social e da valorização profissional. O incentivo ao trabalho, à educação e ao
+                        fortalecimento dos vínculos familiares reduz significativamente a reincidência, conforme
+                        previsto no Estatuto da Criança e do Adolescente (ECA) e em políticas de reinserção.
+                        Paralelamente, a valorização do servidor eleva sua motivação e eficiência, fortalecendo a
+                        segurança institucional.</p>
+                    <p><span class="paragraph-title">Conclusão:</span>Portanto, reafirma-se que o enfrentamento do tema
+                        demanda medidas coordenadas e efetivas. Compete ao Estado, por intermédio da Polícia Penal e de
+                        políticas públicas integradas, implementar programas de capacitação, ampliar as oportunidades de
+                        trabalho e educação para internos e assegurar condições adequadas aos servidores, com o objetivo
+                        de garantir disciplina, ordem e reinserção social.</p>
                 </div>
             </div>
 
             <div id="tema28" class="theme-card">
                 <h3>Os efeitos da corrupção no sistema prisional</h3>
                 <div class="theme-explanation">
-                    <p><strong>Explicação:</strong> Tema recorrente em provas, ligado à fragilidade da gestão, facilitação de fugas e tráfico ilícito.</p>
+                    <p><strong>Explicação:</strong> Tema recorrente em provas, ligado à fragilidade da gestão,
+                        facilitação de fugas e tráfico ilícito.</p>
                 </div>
                 <div class="theme-text">
-                    <p><span class="paragraph-title">Introdução:</span>Entre os aspectos referentes aos efeitos da corrupção no sistema prisional, três pontos merecem destaque especial: o primeiro vincula-se à base legal que fundamenta a atuação; o segundo relaciona-se à operacionalidade do cotidiano prisional; e, por fim, à implementação de políticas de reintegração social e valorização profissional.</p>
-                    <p><span class="paragraph-title">Desenvolvimento 1:</span>Em primeiro lugar, a base legal mostra-se essencial, pois assegura legitimidade às ações da Polícia Penal. De acordo com a Constituição Federal de 1988 (CF/88) e a Lei de Execução Penal (LEP), a custódia deve respeitar os princípios da legalidade e da dignidade humana.</p>
-                    <p><span class="paragraph-title">Desenvolvimento 2:</span>Em segundo lugar, a operacionalidade cotidiana exige preparo técnico e constante atualização. Treinamentos, protocolos de segurança e uso adequado de recursos tecnológicos contribuem para prevenir fugas e rebeliões. A título de exemplo, programas de capacitação periódica em diferentes estados demonstram resultados positivos, em consonância com a Declaração Universal dos Direitos Humanos (DUDH).</p>
-                    <p><span class="paragraph-title">Desenvolvimento 3:</span>Cumpre destacar, ainda, a relevância da reintegração social e da valorização profissional. O incentivo ao trabalho, à educação e ao fortalecimento dos vínculos familiares reduz significativamente a reincidência, conforme previsto no Estatuto da Criança e do Adolescente (ECA) e em políticas de reinserção. Paralelamente, a valorização do servidor eleva sua motivação e eficiência, fortalecendo a segurança institucional.</p>
-                    <p><span class="paragraph-title">Conclusão:</span>Portanto, reafirma-se que o enfrentamento do tema demanda medidas coordenadas e efetivas. Compete ao Estado, por intermédio da Polícia Penal e de políticas públicas integradas, implementar programas de capacitação, ampliar as oportunidades de trabalho e educação para internos e assegurar condições adequadas aos servidores, com o objetivo de garantir disciplina, ordem e reinserção social.</p>
+                    <p><span class="paragraph-title">Introdução:</span>Entre os aspectos referentes aos efeitos da
+                        corrupção no sistema prisional, três pontos merecem destaque especial: o primeiro vincula-se à
+                        base legal que fundamenta a atuação; o segundo relaciona-se à operacionalidade do cotidiano
+                        prisional; e, por fim, à implementação de políticas de reintegração social e valorização
+                        profissional.</p>
+                    <p><span class="paragraph-title">Desenvolvimento 1:</span>Em primeiro lugar, a base legal mostra-se
+                        essencial, pois assegura legitimidade às ações da Polícia Penal. De acordo com a Constituição
+                        Federal de 1988 (CF/88) e a Lei de Execução Penal (LEP), a custódia deve respeitar os princípios
+                        da legalidade e da dignidade humana.</p>
+                    <p><span class="paragraph-title">Desenvolvimento 2:</span>Em segundo lugar, a operacionalidade
+                        cotidiana exige preparo técnico e constante atualização. Treinamentos, protocolos de segurança e
+                        uso adequado de recursos tecnológicos contribuem para prevenir fugas e rebeliões. A título de
+                        exemplo, programas de capacitação periódica em diferentes estados demonstram resultados
+                        positivos, em consonância com a Declaração Universal dos Direitos Humanos (DUDH).</p>
+                    <p><span class="paragraph-title">Desenvolvimento 3:</span>Cumpre destacar, ainda, a relevância da
+                        reintegração social e da valorização profissional. O incentivo ao trabalho, à educação e ao
+                        fortalecimento dos vínculos familiares reduz significativamente a reincidência, conforme
+                        previsto no Estatuto da Criança e do Adolescente (ECA) e em políticas de reinserção.
+                        Paralelamente, a valorização do servidor eleva sua motivação e eficiência, fortalecendo a
+                        segurança institucional.</p>
+                    <p><span class="paragraph-title">Conclusão:</span>Portanto, reafirma-se que o enfrentamento do tema
+                        demanda medidas coordenadas e efetivas. Compete ao Estado, por intermédio da Polícia Penal e de
+                        políticas públicas integradas, implementar programas de capacitação, ampliar as oportunidades de
+                        trabalho e educação para internos e assegurar condições adequadas aos servidores, com o objetivo
+                        de garantir disciplina, ordem e reinserção social.</p>
                 </div>
             </div>
 
             <div id="tema29" class="theme-card">
                 <h3>A modernização da gestão penitenciária</h3>
                 <div class="theme-explanation">
-                    <p><strong>Explicação:</strong> Questão voltada à inovação administrativa, governança e adoção de novas tecnologias no sistema prisional.</p>
+                    <p><strong>Explicação:</strong> Questão voltada à inovação administrativa, governança e adoção de
+                        novas tecnologias no sistema prisional.</p>
                 </div>
                 <div class="theme-text">
-                    <p><span class="paragraph-title">Introdução:</span>Entre os aspectos referentes à modernização da gestão penitenciária, três pontos merecem destaque especial: o primeiro vincula-se à base legal que fundamenta a atuação; o segundo relaciona-se à operacionalidade do cotidiano prisional; e, por fim, à implementação de políticas de reintegração social e valorização profissional.</p>
-                    <p><span class="paragraph-title">Desenvolvimento 1:</span>Em primeiro lugar, a base legal mostra-se essencial, pois assegura legitimidade às ações da Polícia Penal. De acordo com a Constituição Federal de 1988 (CF/88) e a Lei de Execução Penal (LEP), a custódia deve respeitar os princípios da legalidade e da dignidade humana.</p>
-                    <p><span class="paragraph-title">Desenvolvimento 2:</span>Em segundo lugar, a operacionalidade cotidiana exige preparo técnico e constante atualização. Treinamentos, protocolos de segurança e uso adequado de recursos tecnológicos contribuem para prevenir fugas e rebeliões. A título de exemplo, programas de capacitação periódica em diferentes estados demonstram resultados positivos, em consonância com a Declaração Universal dos Direitos Humanos (DUDH).</p>
-                    <p><span class="paragraph-title">Desenvolvimento 3:</span>Cumpre destacar, ainda, a relevância da reintegração social e da valorização profissional. O incentivo ao trabalho, à educação e ao fortalecimento dos vínculos familiares reduz significativamente a reincidência, conforme previsto no Estatuto da Criança e do Adolescente (ECA) e em políticas de reinserção. Paralelamente, a valorização do servidor eleva sua motivação e eficiência, fortalecendo a segurança institucional.</p>
-                    <p><span class="paragraph-title">Conclusão:</span>Portanto, reafirma-se que o enfrentamento do tema demanda medidas coordenadas e efetivas. Compete ao Estado, por intermédio da Polícia Penal e de políticas públicas integradas, implementar programas de capacitação, ampliar as oportunidades de trabalho e educação para internos e assegurar condições adequadas aos servidores, com o objetivo de garantir disciplina, ordem e reinserção social.</p>
+                    <p><span class="paragraph-title">Introdução:</span>Entre os aspectos referentes à modernização da
+                        gestão penitenciária, três pontos merecem destaque especial: o primeiro vincula-se à base legal
+                        que fundamenta a atuação; o segundo relaciona-se à operacionalidade do cotidiano prisional; e,
+                        por fim, à implementação de políticas de reintegração social e valorização profissional.</p>
+                    <p><span class="paragraph-title">Desenvolvimento 1:</span>Em primeiro lugar, a base legal mostra-se
+                        essencial, pois assegura legitimidade às ações da Polícia Penal. De acordo com a Constituição
+                        Federal de 1988 (CF/88) e a Lei de Execução Penal (LEP), a custódia deve respeitar os princípios
+                        da legalidade e da dignidade humana.</p>
+                    <p><span class="paragraph-title">Desenvolvimento 2:</span>Em segundo lugar, a operacionalidade
+                        cotidiana exige preparo técnico e constante atualização. Treinamentos, protocolos de segurança e
+                        uso adequado de recursos tecnológicos contribuem para prevenir fugas e rebeliões. A título de
+                        exemplo, programas de capacitação periódica em diferentes estados demonstram resultados
+                        positivos, em consonância com a Declaração Universal dos Direitos Humanos (DUDH).</p>
+                    <p><span class="paragraph-title">Desenvolvimento 3:</span>Cumpre destacar, ainda, a relevância da
+                        reintegração social e da valorização profissional. O incentivo ao trabalho, à educação e ao
+                        fortalecimento dos vínculos familiares reduz significativamente a reincidência, conforme
+                        previsto no Estatuto da Criança e do Adolescente (ECA) e em políticas de reinserção.
+                        Paralelamente, a valorização do servidor eleva sua motivação e eficiência, fortalecendo a
+                        segurança institucional.</p>
+                    <p><span class="paragraph-title">Conclusão:</span>Portanto, reafirma-se que o enfrentamento do tema
+                        demanda medidas coordenadas e efetivas. Compete ao Estado, por intermédio da Polícia Penal e de
+                        políticas públicas integradas, implementar programas de capacitação, ampliar as oportunidades de
+                        trabalho e educação para internos e assegurar condições adequadas aos servidores, com o objetivo
+                        de garantir disciplina, ordem e reinserção social.</p>
                 </div>
             </div>
 
             <div id="tema30" class="theme-card">
                 <h3>O papel da Polícia Penal na segurança pública do Espírito Santo</h3>
                 <div class="theme-explanation">
-                    <p><strong>Explicação:</strong> Assunto específico de concursos locais, destacando a integração da Polícia Penal à segurança estadual.</p>
+                    <p><strong>Explicação:</strong> Assunto específico de concursos locais, destacando a integração da
+                        Polícia Penal à segurança estadual.</p>
                 </div>
                 <div class="theme-text">
-                    <p><span class="paragraph-title">Introdução:</span>Entre os aspectos referentes ao papel da polícia penal na segurança pública do espírito santo, três pontos merecem destaque especial: o primeiro vincula-se à base legal que fundamenta a atuação; o segundo relaciona-se à operacionalidade do cotidiano prisional; e, por fim, à implementação de políticas de reintegração social e valorização profissional.</p>
-                    <p><span class="paragraph-title">Desenvolvimento 1:</span>Em primeiro lugar, a base legal mostra-se essencial, pois assegura legitimidade às ações da Polícia Penal. De acordo com a Constituição Federal de 1988 (CF/88) e a Lei de Execução Penal (LEP), a custódia deve respeitar os princípios da legalidade e da dignidade humana.</p>
-                    <p><span class="paragraph-title">Desenvolvimento 2:</span>Em segundo lugar, a operacionalidade cotidiana exige preparo técnico e constante atualização. Treinamentos, protocolos de segurança e uso adequado de recursos tecnológicos contribuem para prevenir fugas e rebeliões. A título de exemplo, programas de capacitação periódica em diferentes estados demonstram resultados positivos, em consonância com a Declaração Universal dos Direitos Humanos (DUDH).</p>
-                    <p><span class="paragraph-title">Desenvolvimento 3:</span>Cumpre destacar, ainda, a relevância da reintegração social e da valorização profissional. O incentivo ao trabalho, à educação e ao fortalecimento dos vínculos familiares reduz significativamente a reincidência, conforme previsto no Estatuto da Criança e do Adolescente (ECA) e em políticas de reinserção. Paralelamente, a valorização do servidor eleva sua motivação e eficiência, fortalecendo a segurança institucional.</p>
-                    <p><span class="paragraph-title">Conclusão:</span>Portanto, reafirma-se que o enfrentamento do tema demanda medidas coordenadas e efetivas. Compete ao Estado, por intermédio da Polícia Penal e de políticas públicas integradas, implementar programas de capacitação, ampliar as oportunidades de trabalho e educação para internos e assegurar condições adequadas aos servidores, com o objetivo de garantir disciplina, ordem e reinserção social.</p>
+                    <p><span class="paragraph-title">Introdução:</span>Entre os aspectos referentes ao papel da polícia
+                        penal na segurança pública do espírito santo, três pontos merecem destaque especial: o primeiro
+                        vincula-se à base legal que fundamenta a atuação; o segundo relaciona-se à operacionalidade do
+                        cotidiano prisional; e, por fim, à implementação de políticas de reintegração social e
+                        valorização profissional.</p>
+                    <p><span class="paragraph-title">Desenvolvimento 1:</span>Em primeiro lugar, a base legal mostra-se
+                        essencial, pois assegura legitimidade às ações da Polícia Penal. De acordo com a Constituição
+                        Federal de 1988 (CF/88) e a Lei de Execução Penal (LEP), a custódia deve respeitar os princípios
+                        da legalidade e da dignidade humana.</p>
+                    <p><span class="paragraph-title">Desenvolvimento 2:</span>Em segundo lugar, a operacionalidade
+                        cotidiana exige preparo técnico e constante atualização. Treinamentos, protocolos de segurança e
+                        uso adequado de recursos tecnológicos contribuem para prevenir fugas e rebeliões. A título de
+                        exemplo, programas de capacitação periódica em diferentes estados demonstram resultados
+                        positivos, em consonância com a Declaração Universal dos Direitos Humanos (DUDH).</p>
+                    <p><span class="paragraph-title">Desenvolvimento 3:</span>Cumpre destacar, ainda, a relevância da
+                        reintegração social e da valorização profissional. O incentivo ao trabalho, à educação e ao
+                        fortalecimento dos vínculos familiares reduz significativamente a reincidência, conforme
+                        previsto no Estatuto da Criança e do Adolescente (ECA) e em políticas de reinserção.
+                        Paralelamente, a valorização do servidor eleva sua motivação e eficiência, fortalecendo a
+                        segurança institucional.</p>
+                    <p><span class="paragraph-title">Conclusão:</span>Portanto, reafirma-se que o enfrentamento do tema
+                        demanda medidas coordenadas e efetivas. Compete ao Estado, por intermédio da Polícia Penal e de
+                        políticas públicas integradas, implementar programas de capacitação, ampliar as oportunidades de
+                        trabalho e educação para internos e assegurar condições adequadas aos servidores, com o objetivo
+                        de garantir disciplina, ordem e reinserção social.</p>
                 </div>
             </div>
 
@@ -676,4 +1395,5 @@
     </div>
 
 </body>
+
 </html>
